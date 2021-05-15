@@ -54,6 +54,6 @@ int main()
     int a;
     cin >> a;
     string result = optimised_way(a);
-    cout<< result <<endl;
+    cout<< result <<endl; 
     return 0;
 } 

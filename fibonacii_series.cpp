@@ -7,7 +7,7 @@
 #include <algorithm>
 
 using namespace std;
-long long int fibonanci_series(long long int n)
+long long int fibonanci_series(long long int n) 
 {
     long long int temp1 = 1, temp2 = 1, sum;
     for (long long int i = 0; i < n - 2; i++)
