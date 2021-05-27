@@ -40,6 +40,22 @@ void hashing(string sai)
         if (array[j] > 1)
             cout << char(j + 97) << " "; 
 } 
+void bit_masking_merging(string sai)
+{
+    int h = 0, x = 0;
+    for (int i = 0; i < sai.length(); i++)
+     {
+         x = 1;
+         x = x << (sai[i] - 97);
+         if(h&x)
+          {  
+              cout << sai[i] << " ";
+
+          }
+          else
+              h = h | x;
+     }
+} 
 int main()
 
 {
@@ -47,6 +63,7 @@ int main()
     cin >> sai;
     // duplicate_1(sai);
     // hashing(sai);
+    bit_masking_merging(sai);
 
     return 0;
-} 
+}  
