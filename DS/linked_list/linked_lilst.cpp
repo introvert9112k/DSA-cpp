@@ -155,7 +155,7 @@ void insert(int position, int value)
     temp = new node;
     temp->data = value;
     if (position <= length)
-    { 
+    {
         if (position == 0)
         {
             // struct node *temp;
@@ -165,11 +165,11 @@ void insert(int position, int value)
             // head = temp;
             // last = temp;
             // temp->next = NULL;
-            if(size() ==0)
+            if (size() == 0)
                 last = temp;
             temp->next = current;
             head = temp;
-        }  
+        }
         else
         {
             if (position == length)
@@ -188,7 +188,7 @@ void insert(int position, int value)
     }
     else
         cout << "invalid position" << endl;
-} 
+}
 void insert_in_sorted_order(int value)
 {
     // this is applicable only when the linked list is already sorted
@@ -214,14 +214,14 @@ void insert_in_sorted_order(int value)
                 previous->next = temp;
                 flag = 0;
                 break;
-            } 
-        } 
+            }
+        }
         previous = current;
         current = current->next;
-    } 
+    }
     if (flag)
         append(value);
-}  
+}
 void erase(int position)
 {
     struct node *previous = NULL, *current = head;
@@ -247,7 +247,7 @@ void erase(int position)
             delete current;
         }
     }
-} 
+}
 bool sorted()
 {
     struct node *current = head;
@@ -279,7 +279,7 @@ void remove_sorted_duplicates()
         previous = current;
         current = current->next;
     }
-    // this also works when the linked list is sorted only 
+    // this also works when the linked list is sorted only
 }
 void reverse1()
 {
@@ -323,10 +323,36 @@ void reverse2()
     // ----------comparision-------------
     // Among these two methods the second method is best,because there may be situation that the node consists of huge data i.e node ccan be a structure so copying these much data takes lot of amount of space but in the second case we are using only the pointers which takes less amount of memory
 }
+void recursive_reverse(struct node *first = head, struct node *second = NULL, struct node *third = NULL)
+{
+    static int flag = 0;
+    if (first)
+    {
+        third = second;
+        second = first;
+        first = first->next;
+        second->next = third;
+        recursive_reverse(first, second, third);
+    }
+
+    if (first == NULL && flag==0)
+    {
+
+        last = head;
+        head = second;
+        flag++;
+    }   
+}  
 int main()
 
 {
-    
 
+    append(3);
+    append(4);
+    append(6);
+    recursive_reverse(); 
+    // cout << head->data << endl;
+    // cout << last->data << endl;
     return 0;
 } 
+ 
