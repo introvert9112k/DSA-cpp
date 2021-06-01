@@ -82,4 +82,4 @@ int main()
     cout << "popped item is : " << pop(&st) << endl;
     cout << "the top value in stack is : " << top(&st) << endl;
     return 0;
-} 
+}  

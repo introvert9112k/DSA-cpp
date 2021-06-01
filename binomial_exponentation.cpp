@@ -21,7 +21,7 @@ void binomial_exponentation(long long int a, long long b)
             result = result * a;
         a = a * a;
         b = b >> 1;
-    }
+    } 
     cout << result << endl; //time complexity is O(logN) because the any number has atmost logN binomial digits 
     //this can calculate the exponentaion value that is under the range of long long int
 } 
