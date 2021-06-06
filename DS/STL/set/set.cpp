@@ -4,7 +4,7 @@
 // 2.std::set is an Associative container that contains a sorted set of unique objects of type keyy 
 // 3.it is usually implementted using red black tree 
 // 4.insertion removal search have logirathmic complexity 
-//5. if we want to store user defineddat type in set then we will  have to probide compare function so that set can store them in sorted order
+//5. if we want to store user defined data type in set then we will  have to provide compare function so that set can store them in sorted order
 // 6.we can pass the order of sorting while constructing the set object 
 
 
@@ -61,5 +61,29 @@ int main()
     cout << "the elements of the set karna are : " << endl;
     for(auto x : karna)
         cout<<x<<endl;
-    return 0;
-}  
+    
+    // ----------erase-------------
+
+    // erase method can takes two types of parameters,we can pass the value that we want to delete or the iterator pointing to the value we want to delete 
+
+    // let us erase 56 from the set karna
+
+    karna.erase(56);
+    cout << "the elements of set karna after deleting 56 are :" << endl;
+    for(auto x : karna)
+        cout << x << endl;
+
+    // ------------find------------
+
+    // find function returns the iterator to the location of the element given ,if element is not found then find will returns the end() iterator 
+    
+    //let us check 99 is present in set or not 
+     if(karna.find(99) == karna.end())
+         cout << "99 is not present in the set " << endl;
+    else
+        cout << "99 is present in the set" << endl;
+    return 0; 
+
+    // ------------NOTE---------------
+    // insertion,erase,find takes the logn time complexity 
+}   
