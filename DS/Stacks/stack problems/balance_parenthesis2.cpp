@@ -61,7 +61,10 @@ void parenthesis_balance(string s)
             }
         }    
     }
-    cout << "balanced" << endl;
+    if(k.empty())
+        return true;
+    else
+        return false;
 } 
 int main() 
 

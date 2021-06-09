@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
+#include<unordered_map>
 
 using namespace std;
 void duplicate_1(string sai)
@@ -56,6 +57,15 @@ void bit_masking_merging(string sai)
               h = h | x;
      }
 } 
+void unordered_map_method(string sai)
+{
+    unordered_map<char, int> map;
+    for (int i = 0; i<sai.length(); i++)
+        map[sai[i]]++;
+    for(auto x : map)
+      if(x.second > 1)
+          cout << x.first << " " << x.second << endl;
+}
 int main()
 
 {
@@ -63,7 +73,8 @@ int main()
     cin >> sai;
     // duplicate_1(sai);
     // hashing(sai);
-    bit_masking_merging(sai);
+    // bit_masking_merging(sai);
+    unordered_map_method(sai);
 
     return 0;
 }  
