@@ -34,7 +34,7 @@ void left_side(int *array, int length)
 
 void partition_algorthim(int *array, int n)
 {
-    int pivot = 10;
+    int pivot = 0;
     int i = 0, j = 0;
     for (int j = 0; j < n; j++)
         if (array[j] < pivot)
