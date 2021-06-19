@@ -1,4 +1,5 @@
-// in this we will look at the code for finding the subsequences of the string 
+// problem statement 
+// given two sorted arrays merge them without using extra space 
 #include <bits/stdc++.h>
 #define int long long
 #define mp make_pair
@@ -37,34 +38,11 @@ int power(int a, int b)
     }
     return result;
 } 
-void subsequence(string s,int i,string temp)
-{
-    if(i == s.length())
-      {
-          cout << temp << endl;
-          return;
-      }
-      subsequence(s, i+1, temp + s[i]);
-      subsequence(s, i+1, temp);
-} 
-void subsequence2(string &s)
-{
-    int counter = 1 << s.length();
-    for (int i = 1; i < counter; i++)
-    {
-        for (int j = 0; j < s.length(); j++)
-           if(i & (1<<j))
-               cout << s[j];
-        cout << endl;
-    } 
-    // refer powerset for explanation
-} 
+
 
 int32_t main()
-{
-
-    string s;
-    cin >> s;
-    subsequence(s,0,"");
+{ 
+     
+    
     return 0;
 } 

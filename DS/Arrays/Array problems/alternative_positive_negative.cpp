@@ -1,4 +1,3 @@
-// in this we will look at the code for finding the subsequences of the string 
 #include <bits/stdc++.h>
 #define int long long
 #define mp make_pair
@@ -36,35 +35,53 @@ int power(int a, int b)
         b = b >> 1;
     }
     return result;
-} 
-void subsequence(string s,int i,string temp)
+}
+void alternative_pos_neg(int *arr, int n)
 {
-    if(i == s.length())
-      {
-          cout << temp << endl;
-          return;
-      }
-      subsequence(s, i+1, temp + s[i]);
-      subsequence(s, i+1, temp);
-} 
-void subsequence2(string &s)
-{
-    int counter = 1 << s.length();
-    for (int i = 1; i < counter; i++)
+    int pivot = 0,m=0;
+    int temp[n];
+    //partition Algorthim
+    for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < s.length(); j++)
-           if(i & (1<<j))
-               cout << s[j];
-        cout << endl;
+        if(arr[i] < pivot)
+        {
+            swap(arr[i], arr[m]);
+            m++;
+        }
     } 
-    // refer powerset for explanation
-} 
+    // Actual code
+    int j = n - 1, i = 0, count = 0,k=0;
+    while(i <= j)
+    {
+         if(!(count & 1))
+         {
+             temp[k] = arr[i];
+             i++;
+             k++;
+             count++;
+         }
+         else 
+         {
+             temp[k] = arr[j];
+             j--;
+             k++;
+             count++;
+         }
+    } 
+    fo(i, n)
+    cout<< temp[i] << " ";
+    Time complexity O(N)
+    space complexity O(N) 
+}  
 
 int32_t main()
 {
 
-    string s;
-    cin >> s;
-    subsequence(s,0,"");
+    int n;
+    cin >> n;
+    int arr[n];
+    fo(i, n)
+     cin >>arr[i];
+    alternative_pos_neg(arr, n);
     return 0;
 } 

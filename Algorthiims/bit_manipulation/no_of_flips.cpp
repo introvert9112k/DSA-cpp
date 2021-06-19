@@ -61,7 +61,18 @@ void flip_count(int a, int b)
     }
     cout << count << endl;
 } 
-
+void flip_bits2(int a,int b)
+{
+    int c = a ^ b;
+    int count = 0;
+    while(c>0)
+    {
+        int rsbm = c & -c;
+        c = c - rsbm;
+        count++;
+    }
+    cout << count << endl;
+} 
 int32_t main()
 { 
      
@@ -71,5 +82,6 @@ int32_t main()
     int a, b;
     cin >> a >> b;
     flip_count(a, b);
+    flip_bits2(a, b);
     return 0;
 } 
