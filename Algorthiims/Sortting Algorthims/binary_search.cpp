@@ -41,8 +41,24 @@ int binary_search2(int *arr,int target,int n)
         return high;
     return -1;
 
+}
+
+int recursive_search(int* arr, int target, int low, int high)
+{
+    int mid;
+    if (low <= high)
+    {
+        mid = (low + high) >> 1;
+        if (arr[mid] == target)
+            return mid;
+        else if (arr[mid] < target)
+            return recursive_search(arr, target, mid + 1, high);
+        else
+            return recursive_search(arr, target, low, mid - 1);
+     }
+     return -1;
 } 
-int main()
+ int main()
 
 {
     int n;
@@ -53,7 +69,8 @@ int main()
     int target;
     cin >> target;
     sort(arr, arr + n);
-    int res = binary_search2(arr, target, n);
+    // int res = binary_search2(arr, target, n);
+    int res = recursive_search(arr, target, 0, n - 1);
     res != -1 ? (cout << "the target found at index : " << res << endl) : (cout << "target not found");
     return 0;
 } 
