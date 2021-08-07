@@ -42,3 +42,45 @@ level of tree is equal to the height of the tree or height of the root node.
 **if tree has N nodes then it should have n-1 edges.**
 
 **binary tree is the tree in which all the nodes has atmost 2 nodes ,that mean each node has 0,1,2 child nodes**
+
+**BInary trees**
+The tree in which every node has atmost 2 children ,then tree is known as binary tree
+
+**Formulas for binary trees**
+Given n unlablled nodes,then the number of binary trees can be formed by these nodes is given by formula 
+ 2nCn/(n+1) 
+Among these binary trees, the trees with maximum height is 2**n-1 - 1(2 power n-1 and minus 1)
+
+given n nodes which are labelled then no of trees formed would be (2nCn/n+1)*n!
+Trees with maximum height are (2**n-1 - 1)*n! 
+
+Given the height of binary tree is h,then minumum nodes required for having height h is h+1
+  min nodes for having height h is **n = h+1**
+  max nodes for having height h is  n = 2**h+1 -1 (2 power h+1 minus 1) 
+
+Given n nodes then the maximum and minmum height trees that can be formed by these nodes are given by
+  max height of tree is **h = n -1** 
+  min height of the tree is **h = log2(n+1) - 1**
+
+  so range of h is from   **log2(n+1) - 1 <= h <= n-1**
+
+**Relation between internal and external nodes**
+  no of nodes with degree zero = no of nodes with degree 2 + 1
+  deg(0) = deg(2) +1
+
+**Strict binary tree**
+binary tree in which the each node has either 0 or 2 nodes,is called strict binary tree
+
+**Formulas for strict binary tree** 
+
+Given the height of binary tree is h,then minumum nodes required for having height h is h+1
+  min nodes for having height h is **n = 2*h+1**
+  max nodes for having height h is  n = 2**h+1 -1 (2 power h+1 minus 1) 
+
+given n nodes the minimum and maximum height is 
+  minimum height **h = log2(n+1) - 1**
+  maximum heigt **h = (n-1)/2**
+
+**Relation between internal and external nodes for strict binary trees**
+  no of nodes with degree zero = no of nodes with degree 2 + 1
+  deg(0) = deg(2) +1 
