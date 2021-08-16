@@ -97,31 +97,28 @@ void binarytree::create()
 
 void binarytree::preorder(node *temp)
 {
-    if (temp)
-    {
-        cout << temp->data << " ";
-        preorder(temp->left);
-        preorder(temp->right);
-    }
+    if (temp == NULL)
+        return;
+    cout << temp->data << " ";
+    preorder(temp->left);
+    preorder(temp->right);
 }
 void binarytree::inorder(node *temp)
 {
-    if (temp)
-    {
-        inorder(temp->left);
-        cout << temp->data << " ";
-        inorder(temp->right);
-    }
+    if (temp == NULL)
+        return;
+    inorder(temp->left);
+    cout << temp->data << " ";
+    inorder(temp->right);
 }
 void binarytree::postorder(node *temp)
 {
-    if (temp)
-    {
-        postorder(temp->left);
-        postorder(temp->right);
-        cout << temp->data << " ";
-    }
-}
+    if (temp == NULL)
+        return;
+    postorder(temp->left);
+    postorder(temp->right);
+    cout << temp->data << " ";
+} 
 int main()
 {
     binarytree tree;

@@ -99,8 +99,7 @@ struct node *rcreate()
     // In this approach we are not consturcting the binary tree level by level, first we are creating the left childs of the nodes,after that in reverse traverse we are creating the right childs
 
     // Time complexity is o(2*n +1)
-    // because if there are n nodes there will be n+1 null pointers, recursive calls are called for n nodes and n+1
-    // null nodes,so time complexity is n + n +1 =2*n +1
+    // because if there are n nodes there will be n+1 null pointers, recursive calls are called for n nodes and n+1 null nodes,so time complexity is n + n +1 =2*n +1
 
     // Auxilary space is O(N)
     // precisely it is equal to the no of levels in tree +1,+1 is for null nodes,for them also activation record
@@ -132,30 +131,27 @@ struct node *rcreate2()
 }
 void preorder(struct node *temp)
 {
-    if (temp)
-    {
-        cout << temp->data << " ";
-        preorder(temp->left);
-        preorder(temp->right);
-    }
+    if (temp == NULL)
+        return;
+    cout << temp->data << " ";
+    preorder(temp->left);
+    preorder(temp->right);
 }
 void inorder(struct node *temp)
 {
-    if (temp)
-    {
-        inorder(temp->left);
-        cout << temp->data << " ";
-        inorder(temp->right);
-    }
+    if (temp == NULL)
+        return;
+    inorder(temp->left);
+    cout << temp->data << " ";
+    inorder(temp->right);
 }
 void postorder(struct node *temp)
 {
-    if (temp)
-    {
-        postorder(temp->left);
-        postorder(temp->right);
-        cout << temp->data << " ";
-    }
+    if (temp == NULL)
+        return;
+    postorder(temp->left);
+    postorder(temp->right);
+    cout << temp->data << " ";
 }
 void iterative_preorder(struct node *temp = root)
 {

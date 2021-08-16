@@ -39,6 +39,8 @@ level of tree is equal to the height of the tree or height of the root node.
 
 **subtree** - A node and all its decendents form a sub tree
 
+**diameter of the tree** diameter is defined as the no of nodes along the maximum path between the two leaf nodes. Maximum path may or may not pass through the root node.
+
 **if tree has N nodes then it should have n-1 edges.**
 
 **binary tree is the tree in which all the nodes has atmost 2 nodes ,that mean each node has 0,1,2 child nodes**
