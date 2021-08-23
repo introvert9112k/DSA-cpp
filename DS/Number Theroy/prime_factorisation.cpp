@@ -2,6 +2,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 // this is how we find the prime factorisation in elementary school ,first takes the smallest prime that divides the number and divides it until it is not divisible by that prime,then go for next prime
+
 // this is how this prime factorisation works
 void primefactorisation(int n)
 {
@@ -16,7 +17,11 @@ void primefactorisation(int n)
     // we go on divide n until it becomes 1,in some cases it is may possible that n does not becomes 1,in that situation the final value of n would be also a prime, so print it
     if (n != 1)
         cout << n << " ";
-}
+
+    NOTE:
+    // prime factors of the number will be always less than or equal to sqrt(n) except the number itself
+    // maximum number of prime factors of a number is equal to log2(N)
+} 
 int main()
 
 {

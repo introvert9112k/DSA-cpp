@@ -24,7 +24,7 @@ void findsieve()
 vector<int> primenumbers(int r)
 {
     vector<int> v;
-    for (int i = 2; i <= r; i++)
+    for (int i = 2; i*i <= r; i++)
         if (sieve[i] == 0)
             v.push_back(i);
     return v;
@@ -34,7 +34,7 @@ int main()
 {
     // we have to find the prime numbers in the range l to r
     // steps
-    // 1.first we find the prime numbers which are less than the sqrt of r
+    // 1.first we find the prime numbers which are less than the r
     // 2.we mark the multiples of these primes in the range l to r
     // 3.the unmarked numbers in the range l to r is the prime numbers in the range
     findsieve();
@@ -71,4 +71,4 @@ int main()
     }
     return 0;
     // segmented sieve is generally used when the range is lareger than the 10^7 because max array size is only 10^7
-}
+} 
