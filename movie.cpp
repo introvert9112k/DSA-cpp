@@ -4,7 +4,7 @@ struct multiticket
 {
     string name;
     int ticketid;
-};
+}; 
 class movie
 {
 public:
