@@ -21,6 +21,8 @@ void primefactorisation(int n)
     NOTE:
     // prime factors of the number will be always less than or equal to sqrt(n) except the number itself
     // maximum number of prime factors of a number is equal to log2(N)
+    // time complexity is O(sqrt(N))/
+    // this can be reduced to logN using the sieve
 } 
 int main()
 

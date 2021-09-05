@@ -1,6 +1,6 @@
 // in this we will look at the segmented sieve
 // in the sieve of erathonses there is a limit of the array size, maximum array size that we can create is 10^7
-// in case of calculating the prime numbers in a largere range than 10^7 it would become problem ,this can avoided by using the segemented sieve. in this we take only segment of teh sieve array whcih we require
+// in case of calculating the prime numbers in a largere range than 10^7 it would become problem ,this can avoided by using the segemented sieve. in this we take only segment of the sieve array which we require
 #include <bits/stdc++.h>
 #define n 10000000
 using namespace std;
