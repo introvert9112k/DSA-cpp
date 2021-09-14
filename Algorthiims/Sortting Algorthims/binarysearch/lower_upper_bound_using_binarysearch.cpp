@@ -21,42 +21,42 @@
 
 using namespace std;
 int lower_bound1(int *arr, int n, int target)
-{
+{   
+    // if the target is present it returns the first occurence of the target,if not returns the first element which is greater than the target,if no such element present it returns -1
     int low = 0, high = n - 1;
-    int mid;
+    int mid, ans=-1;
+    // ans stores the location which might be the answer
     while (low <= high)
     {
         mid = (low + high) >> 1;
-        if (arr[mid] == target)
-            return mid;
-        else if (arr[mid] < target)
-            low = mid + 1;
+        if (arr[mid] >= target)
+            {   
+                ans = mid;
+                high = mid - 1;
+            } 
         else
-            high = mid - 1;
-    }
-    return low <= high ? mid : -1;
-}
+            low = mid + 1;
+    } 
+    return ans;
+}   
 int upper_bound1(int *arr, int n, int target)
 {
     int low = 0, high = n - 1;
-    int mid;
+    int mid,ans=-1;
     while (low <= high)
     {
         mid = (low + high) >> 1;
-        if (arr[mid] == target)
-            return mid != n - 1 ? mid + 1 : -1;
-        else if (arr[mid] < target)
+        if(arr[mid] <= target)
+            low = mid + 1;
+        else 
         {
-            if (mid != (n - 1))
-                low = mid + 1;
-            else
-                return -1;
-        }
-        else
+            ans = mid;
             high = mid - 1;
-    } 
-    return high + 1;
-} 
+        }
+            
+    }
+    return ans;
+}  
 bool cmp(int a, int b)
 {
     return a > b;
@@ -89,7 +89,7 @@ int32_t main()
 
     int res = lower_bound1(arr,n,target);
     if(arr[res] == target)
-        cout << "the target is present in array" << endl;
+        cout << "the target is present in array at location " << res<< endl;
     else if(res == -1)
         cout << "there is no elemet that is greater than the target in the array : " << endl;
     else

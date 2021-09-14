@@ -52,7 +52,8 @@ vector<int> subsequencebit(int *arr, int value)
         value = value >> 1;
     }
     return ans;
-    // tc = O((2^n)*length of array)
+    // tc = O((2^n)*logN)
+    // N is the maximum element in the array
 } 
 // better version of bit masking using the kahane's algorthim
 vector<int> subsequencebit2(int *arr, int value)
@@ -62,6 +63,7 @@ vector<int> subsequencebit2(int *arr, int value)
     while(value > 0)
     {
         rsbm = value & -value; //finding the right most significant bit mask
+        // rsbm is always the power of 2
         pos = log2(rsbm); //finding the position of the msb in the rsbm
         ans.push_back(arr[pos]); //pushing correponding value from array into vector
         value = value - rsbm; // unsetting the right most set bit,for finding the other set bits
