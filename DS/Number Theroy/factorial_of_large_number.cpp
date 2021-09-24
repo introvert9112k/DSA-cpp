@@ -13,8 +13,7 @@ struct node
 };
 // factorial of the larger number
 // reference:https://www.youtube.com/watch?v=VCfZOe1oJHU&ab_channel=DhruvGoyal
-node *tail = new node(1);
-node *head = tail;
+node *tail = new node(1);  //this is first node 
 
 // using linked list
 void multiply(int n)
@@ -41,6 +40,7 @@ void multiply(int n)
 void print()
 {
     node *first = tail, *second = NULL, *third = NULL;
+    // reversing the linkedlist
     while (first)
     {
         third = second;

@@ -21,42 +21,41 @@
 
 using namespace std;
 int lower_bound1(int *arr, int n, int target)
-{   
+{
     // if the target is present it returns the first occurence of the target,if not returns the first element which is greater than the target,if no such element present it returns -1
     int low = 0, high = n - 1;
-    int mid, ans=-1;
+    int mid, ans = -1;
     // ans stores the location which might be the answer
     while (low <= high)
     {
         mid = (low + high) >> 1;
-        if (arr[mid] >= target)
-            {   
-                ans = mid;
-                high = mid - 1;
-            } 
+        if (arr[mid] <= target)
+        {
+            ans = mid;
+            low = mid+1;
+        }
         else
-            low = mid + 1;
-    } 
+            high = mid - 1;
+    }
     return ans;
-}   
+} 
 int upper_bound1(int *arr, int n, int target)
 {
     int low = 0, high = n - 1;
-    int mid,ans=-1;
+    int mid, ans = -1;
     while (low <= high)
     {
         mid = (low + high) >> 1;
-        if(arr[mid] <= target)
+        if (arr[mid] <= target)
             low = mid + 1;
-        else 
+        else
         {
             ans = mid;
             high = mid - 1;
         }
-            
     }
     return ans;
-}  
+}
 bool cmp(int a, int b)
 {
     return a > b;
@@ -87,16 +86,16 @@ int32_t main()
 
     // ------lower_bound code-----------
 
-    int res = lower_bound1(arr,n,target);
-    if(arr[res] == target)
-        cout << "the target is present in array at location " << res<< endl;
-    else if(res == -1)
-        cout << "there is no elemet that is greater than the target in the array : " << endl;
+    int res = lower_bound1(arr, n, target);
+    if (arr[res] == target)
+        cout << "the target is present in array at location " << res << endl;
+    else if (res == -1)
+        cout << "there is no elemet that is smaller than the target in the array : " << endl;
     else
-        cout << "target is not present ,and next greater element than target is : " << arr[res] << endl;
+        cout << "target is not present ,and greatest smallest element than target is : " << arr[res] << endl;
 
     // ------------upper_bound code-----------
-    
+
     int res2 = upper_bound1(arr, n, target);
     if (res2 == -1)
         cout << "there is no upper bound for target" << endl;
