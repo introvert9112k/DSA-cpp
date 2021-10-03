@@ -2,37 +2,50 @@
 #include <string>
 #include <algorithm>
 #include <stack>
+// problem statement
+// given a string containing ( ,) {, } and [,] we should find whehter the string is balanced or not
 
 using namespace std;
-void balance_parenthesis(string &sai)
+bool balance_parenthesis(string &sai)
 {
-    stack<char> s;
+    stack<char> stack;
     int length = sai.length();
     for (int i = 0; i < length; i++)
     {
-        if (sai[i] == '(')
-            s.push('(');
+        if (sai[i] == '(' or sai[i] == '{' or sai[i] == '[')
+            stack.push(sai[i]);
         else if (sai[i] == ')')
         {
-            if (s.empty())
-            {
-                cout << "not balanced" << endl;
-                return;
-            }
-            s.pop();
+            if (stack.empty() or stack.top() != '(')
+                return false;
+            else
+                stack.pop();
+        }
+        else if (sai[i] == '}')
+        {
+            if (stack.empty() or stack.top() != '{')
+                return false;
+            else
+                stack.pop();
+        }
+        else if (sai[i] == ']')
+        {
+            if (stack.empty() or stack.top() != '[')
+                return false;
+            else
+                stack.pop();
         }
     }
-    if (s.empty())
-        cout << "balanced" << endl;
-    else
-        cout << "not balanced" << endl;
+    return stack.empty();
 } 
 int main()
 
 {
     string sai;
     cin >> sai;
-    balance_parenthesis(sai);
+    if(balance_parenthesis(sai))
+        cout << "balanced" << endl;
+    else
+        cout << "unbalanced" << endl;
     return 0;
 }
-
