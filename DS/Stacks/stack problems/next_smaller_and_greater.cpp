@@ -24,7 +24,7 @@ void previoussmaller(vector<int> &arr)
         // else pop the elements of the stack until you reach the smaller element than current element
         else
         {
-            while (!stack.empty() and stack.top() > arr[i])
+            while (!stack.empty() and stack.top() >= arr[i])
                 stack.pop();
             if (stack.empty())
                 cout << -1 << " ";
@@ -49,7 +49,7 @@ void previousgreater(vector<int> &arr)
             cout << stack.top() << " ";
         else
         {
-            while (!stack.empty() and stack.top() < arr[i])
+            while (!stack.empty() and stack.top() <= arr[i])
             {
                 stack.pop();
             }
@@ -75,7 +75,7 @@ void nextgreater(vector<int> &arr)
             temp[i] = stack.top();
         else
         {
-            while (!stack.empty() and stack.top() < arr[i])
+            while (!stack.empty() and stack.top() <= arr[i])
                 stack.pop();
             if (stack.empty())
                 temp[i] = -1;
@@ -100,7 +100,7 @@ void nextsmaller(vector<int> &arr)
             temp[i] = stack.top();
         else
         {
-            while (!stack.empty() and stack.top() > arr[i])
+            while (!stack.empty() and stack.top() >= arr[i])
                 stack.pop();
             if (stack.empty())
                 temp[i] = -1;
