@@ -7,30 +7,28 @@ class node
     node *left;
     int data;
     node *right; 
+    node(int x)
+    {
+        data = x;
+        left = right = NULL;
+    }
 };
 class binarytree{
     public:
    node* create()
    {
        int x;
-       static int i = 0;
-       if(i==0)
-       {
-           cout << "Enter the root node value" << endl;
-           i++;
-       }
+       cout << "Enter the data" << endl;
        cin >> x;
        if(x==-1)
            return NULL;
-       node *new_node = new node;
-       new_node->data = x;
-       new_node->right = new_node->left = NULL;
+       node *new_node = new node(x);
        cout << "Enter the left child of the node " << new_node->data << endl;
        new_node->left = create();
        cout << "Enter the right child of the node " << new_node->data << endl;
        new_node->right = create();
        return new_node;
-   }
+   } 
 
    void level_order(node * temp)
    {

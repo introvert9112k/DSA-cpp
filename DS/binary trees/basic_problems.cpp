@@ -9,6 +9,11 @@ public:
     node *left;
     int data;
     node *right;
+    node(int x)
+    {
+        data = x;
+        left = right = NULL;
+    }
 };
 class binarytree
 {
@@ -16,24 +21,17 @@ public:
     node *create()
     {
         int x;
-        static int i = 0;
-        if (i == 0)
-        {
-            cout << "Enter the value of the root node " << endl;
-            i++;
-        }
+        cout << "Enter the data" << endl;
         cin >> x;
         if (x == -1)
             return NULL;
-        node *new_node = new node;
-        new_node->data = x;
-        new_node->left = new_node->right = NULL;
+        node *new_node = new node(x);
         cout << "Enter the left child of the node " << new_node->data << endl;
         new_node->left = create();
         cout << "Enter the right child of the node " << new_node->data << endl;
         new_node->right = create();
         return new_node;
-    }
+    } 
     void inorder(node *temp)
     {
         if (temp == NULL)
@@ -42,7 +40,7 @@ public:
         cout << temp->data << " ";
         inorder(temp->right);
     } 
-    int countnodes(node *temp)
+    int countnodes(node *temp) 
     {
         int x, y;
         if (temp == NULL)
@@ -75,7 +73,7 @@ public:
         else if (temp->right != NULL and temp->left == NULL)
             return x + y + 1;
         return x + y;
-    }
+    } 
 
     int nochild(node *temp)
     {
@@ -96,7 +94,7 @@ public:
         x = height(temp->left);
         y = height(temp->right);
         return max(x, y) + 1;
-    }
+    } 
     int sum(node *temp)
     {
         int x, y;
@@ -106,7 +104,7 @@ public:
         y = sum(temp->right);
         return x + y + temp->data;
     }
-};
+}; 
 int main()
 
 {

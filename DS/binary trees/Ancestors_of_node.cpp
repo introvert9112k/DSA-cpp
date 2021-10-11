@@ -6,7 +6,12 @@ public:
     node *left;
     int data;
     node *right;
-};
+    node(int x)
+    {
+        data = x;
+        left = right = NULL;
+    }
+}; 
 class binarytree
 {
 public:
@@ -14,24 +19,17 @@ public:
     {
         node *new_node;
         int x;
-        static int i = 0;
-        if (i == 0)
-        {
-            cout << "Enter the value of the root node" << endl;
-            i++;
-        }
+        cout << "Enter the data" << endl;
         cin >> x;
         if (x == -1)
             return NULL;
-        new_node = new node;
-        new_node->data = x;
-        new_node->left = new_node->right = NULL;
+        new_node = new node(x);
         cout << "Enter the left child of the node  " << new_node->data << endl;
         new_node->left = create();
         cout << "Enter the right child of the node " << new_node->data << endl;
         new_node->right = create();
         return new_node;
-    }
+    }  
     void preorder(node *temp)
     {
         if (temp == NULL)

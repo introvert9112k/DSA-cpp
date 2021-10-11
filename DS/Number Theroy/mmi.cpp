@@ -6,7 +6,7 @@
 // Fermats little theorm
 // A^m-1 = 1mod(M) this statement states that the if A^m-1 is divided by m then remainder is 1
 // this statement holds only when the m is prime number and A is not multiple of  m
-// let us multiple fermats little equation with A^-1 (A inverse ) on both sides then equation becomes
+// let us multiply fermats little equation with A^-1 (A inverse ) on both sides then equation becomes
 // A^m-2 = A^-1mod(M) so A-1 = (A^m-2)%M hence we got our modulo multiplicative inverse of A
 // A^m-2 can be calculated using the binary exponentation
 
@@ -38,27 +38,28 @@ int binary(int a, int b, int m1)
         b = b >> 1;
     }
     return result;
-}
+} 
 int32_t main()
 
 {
     //  precomputing the factorials
-    fact[0] = 1;
-    for (int i = 1; i <= n; i++)
-        fact[i] = (fact[i - 1] * i) % m;
+    // fact[0] = 1;
+    // for (int i = 1; i <= n; i++)
+    //     fact[i] = (fact[i - 1] * i) % m;
 
-    //  nck = n!/(n-k)!*k!
-    // let us consider n! as A and (n-k)!*k! as B so (A/B)%M = (A%M * B^-1%M)%M;
-    int k;
-    cin >> k;
-    //k must be less than n
-    int numer = fact[n]; //here fact of n is n!%m
-    cout << "numer" << numer << endl;
-    int denom = fact[n - k] * fact[k]; //here denom is b
-    cout << "denom" << denom << endl;
-    // for this denominator we should find the inverse
-    int ans = numer * binary(denom, m - 2, m); //using the binary calculating teh inverse and mulitplying with nuemerator
-    cout << ans % m << endl;
+    // //  nck = n!/(n-k)!*k!
+    // // let us consider n! as A and (n-k)!*k! as B so (A/B)%M = (A%M * B^-1%M)%M;
+    // int k;
+    // cin >> k;
+    // //k must be less than n
+    // int numer = fact[n]; //here fact of n is n!%m
+    // cout << "numer" << numer << endl;
+    // int denom = fact[n - k] * fact[k]; //here denom is b
+    // cout << "denom" << denom << endl;
+    // // for this denominator we should find the inverse
+    // int ans = numer * binary(denom, m - 2, m); //using the binary calculating teh inverse and mulitplying with nuemerator
+    // cout << ans % m << endl;
 
+    cout << binary(2, m - 2, m) << endl;
     return 0;
-}
+} 
