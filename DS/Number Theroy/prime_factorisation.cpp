@@ -18,12 +18,31 @@ void primefactorisation(int n)
     if (n != 1)
         cout << n << " ";
 
-    NOTE:
+// NOTE:
     // prime factors of the number will be always less than or equal to sqrt(n) except the number itself
     // maximum number of prime factors of a number is equal to log2(N)
     // time complexity is O(sqrt(N))/
     // this can be reduced to logN using the sieve
 } 
+
+// counting the number of even and odd prime factors of the number
+void count(int n)
+{
+    int even = 0, odd = 0;
+    for (int i = 2; i * i <= n; i++)
+    {
+        while (n % i == 0)
+        {
+            n = n / i;
+            i & 1 ? ++odd : ++even;
+        }
+    }
+    if (n != 1)
+        n & 1 ? ++odd : ++even;
+    cout << "odd factors count is" << odd << endl;
+    cout << "even factors count is " << even << endl;
+} 
+
 int main()
 
 {
@@ -33,10 +52,11 @@ int main()
     while (t--)
     {
         int n;
-        n = rand() % 1000;
+        cin >> n;
         cout << "prime factorisation of the " << n << " is : ";
         primefactorisation(n);
+        // count(n);
         cout << endl;
     }
     return 0;
-}
+} 
