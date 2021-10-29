@@ -1,5 +1,7 @@
 // in this we will implement the queue data structure using the array
 // in queue elements are inserted at the rare end and deletion is done from the front end
+
+// In this eneque and deque takes constant time ,but it is not space effiecent
 #include <iostream>
 #include <string>
 #include <algorithm>

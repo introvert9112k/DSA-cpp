@@ -104,6 +104,12 @@ public:
         y = sum(temp->right);
         return x + y + temp->data;
     }
+    int height1(node *temp)
+    {
+        if(!temp)
+            return 0;
+        return max(height1(temp->left), height1(temp->right)) + 1;
+    }
 }; 
 int main()
 
@@ -119,5 +125,6 @@ int main()
     cout << "no of nodes with no childs are : " << tree.nochild(root) << endl;
     cout << "sum of all the nodes in the tree is : " << tree.sum(root) << endl;
     cout << "the height of the tree is : " << tree.height(root) << endl;
+    cout << "the height of the tree is : " << tree.height1(root) << endl;
     return 0;
-}
+} 

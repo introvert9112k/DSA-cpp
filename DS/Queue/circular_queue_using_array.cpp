@@ -3,68 +3,76 @@
 #include <algorithm>
 
 using namespace std;
-struct queue
+class queue
 {
     int size;
     int front;
     int rare;
     int *arr;
+
+public:
+    queue(int n)
+    {
+        size = n;
+        front = rare = -1;
+        arr = new int[n];
+    }
+    bool full()
+    {
+        return (rare + 1) % size == front;
+    }
+    bool empty()
+    {
+        return front == -1 and rare == -1;
+    }
+    void enqueue(int data)
+    {
+        if (full())
+        {
+            cout << "queue is full" << endl;
+        }
+        else
+        {
+            if (front == -1)
+                front = 0;
+            rare = (rare + 1) % size;
+            arr[rare] = data;
+        }
+    }
+    int dequeue()
+    {
+        int x = -1;
+        if (empty())
+        {
+            cout << "queue is empty" << endl;
+            return x;
+        }
+        else
+        {
+            x = arr[front];
+            if (front == rare)
+            {
+                front = -1;
+                rare = -1;
+            }
+            else
+                front = (front + 1) % size;
+            return x;
+        }
+    }
 };
-bool full(struct queue &q)
-{
-    return (q.rare + 1) % q.size == q.front ? true : false;
-}
-bool empty(struct queue &q)
-{
-    return q.rare == q.front ? true : false;
-}
-void enqueue(struct queue &q, int value)
-{
-    if (full(q))
-    {
-        cout << "queue is full" << endl;
-    }
-    else
-    {
-        q.rare = (q.rare + 1) % q.size;
-        q.arr[q.rare] = value;
-    }
-} 
-int dequeue(struct queue &q)
-{ 
-    int x = -1;
-    if (empty(q))
-        cout << "the queue is empty" << endl;
-    else
-    {
-        q.front = (q.front + 1) % q.size;
-        x = q.arr[q.front];
-    }
-    return x;
-}
-void traverse(struct queue &q)
-{
-    for (int i = q.front; i <q.rare; i++) 
-        cout << q.arr[i]<<endl;
-} 
 int main()
 
 {
-    struct queue q;
-    cout << "enter the size of the queue : " << endl;
-    cin >> q.size;
-    q.front = 0;
-    q.rare = 0;
-    enqueue(q, 3);
-    enqueue(q, 9);
-    enqueue(q, 6);
-    enqueue(q, 4);
-    cout << "the elements of the queue are : " << endl;
-    traverse(q);
-    dequeue(q);
-    dequeue(q);
-    dequeue(q);
-    cout << "the elements after removing three operations are : " << endl;
-    traverse(q); 
+    queue q(4);
+    q.enqueue(3);
+    q.enqueue(5);
+    q.enqueue(5);
+    q.enqueue(8);
+    // q.enqueue(10);
+    cout << q.dequeue() << endl;
+    cout << q.dequeue() << endl;
+    cout << q.dequeue() << endl;
+    cout << q.dequeue() << endl;
     return 0;
-}     
+} 

@@ -1,160 +1,145 @@
 // in this we will look at the double linked list
-#include <iostream>
-#include <string>
-#include <algorithm>
-
+#include <bits/stdc++.h>
 using namespace std;
-struct node
+
+class Node
 {
-    struct node *previous;
+public:
+    Node *prev, *next;
     int data;
-    struct node *next;
+    Node(int x)
+    {
+        data = x;
+        prev = NULL;
+        next = NULL;
+    }
 };
-struct node *head = NULL, *last = NULL;
-void append(int value)
+
+class doublelist
 {
-    struct node *temp = new node;
-    temp->data = value;
-    temp->next = NULL;
-    temp->previous = NULL;
-    if (head == NULL)
+public:
+    Node *head = NULL, *tail = NULL;
+    void append(int value)
     {
-        head = temp;
-        last = temp;
-    }
-    else
-    {
-        last->next = temp;
-        temp->previous = last;
-        last = temp;
-    }
-}
-int size()
-{
-    struct node *current = head;
-    int count = 0;
-    while (current)
-    {
-        count++;
-        current = current->next;
-    }
-    return count;
-}
-void traverse()
-{
-    struct node *current = head;
-    while (current)
-    {
-        cout << current->data << " ";
-        current = current->next;
-    }
-}
-void reverse_traverse()
-{
-    struct node *current = last;
-    while (current)
-    {
-        cout << current->data << " ";
-        current = current->previous;
-    }
-}
-void insert(int position, int value)
-{
-    struct node *temp = new node, *current = head;
-    temp->data = value;
-    temp->next = NULL;
-    temp->previous = NULL;
-    int temp_pos = position;
-    if (position <= size())
-    {
-        if (position == 0)
+        Node *temp = new Node(value);
+        if (!head)
         {
-            temp->next = current;
-            current->previous = temp;
             head = temp;
+            tail = temp;
         }
         else
         {
-            if (position == size())
+            tail->next = temp;
+            temp->prev = tail;
+            tail = tail->next;
+        }
+    }
+    int size()
+    {
+        Node *temp = head;
+        int cnt = 0;
+        while (temp)
+        {
+            temp = temp->next;
+            cnt++;
+        }
+        return cnt;
+    }
+    void traverse()
+    {
+        Node *curr = head;
+        while (curr)
+        {
+            cout << curr->data << " ";
+            curr = curr->next;
+        }
+    }
+
+    void insert(int pos, int val)
+    {
+        if (pos < size())
+        {
+            Node *temp = new Node(val);
+            if (pos == 1)
             {
-                last->next = temp;
-                temp->previous = last;
-                last = temp;
+                temp->next = head;
+                head->prev = temp;
+                head = temp;
                 return;
             }
-
-            while (--position)
+            Node *previous, *curr = head;
+            while (--pos)
             {
-                current = current->next;
+                previous = curr;
+                curr = curr->next;
             }
-            temp->next = current->next;
-            current->next->previous = temp; //this statement should be taken care of because when the current->next is null then there would be no previous to the null so while inserting at last we should take care of this
-            current->next = temp;
-            temp->previous = current;
+            previous->next = temp;
+            temp->prev = previous;
+            temp->next = curr;
+            curr->prev = temp;
         }
     }
-}
-void erase(int position)
-{
-    struct node *current = head;
-    if (position < size())
+    void reverse()
     {
-        if (position == 0)
+        Node *curr = head, *temp;
+        while (curr)
         {
-            head = current->next;
-            current->next = NULL;
-            head->previous = NULL;
-            delete current;
+            temp = curr->prev;
+            curr->prev = curr->next;
+            curr->next = temp;
+            curr = curr->prev;
         }
-        else
+        if (temp != NULL)
+            head = temp->prev;
+    }
+    void remove(int pos)
+    {
+        int n = size();
+        if (pos <= n)
         {
-            while (position--)
+            if (pos == 1)
             {
-                current = current->next;
+                Node *temp = head;
+                head = head->next;
+                temp->next = NULL;
+                if (n > 1)
+                    head->prev = NULL;
+                delete temp;
             }
-            current->previous->next = current->next;
-            if (current->next)
-                current->next->previous = current->previous;
+            else if (pos == n)
+            {
+                Node *temp = tail;
+                tail = tail->prev;
+                temp->prev = NULL;
+                tail->next = NULL;
+                delete temp;
+            }
             else
-                last = current->previous;
-            current->next = NULL;
-            current->previous = NULL;
-            delete current;
+            {
+                Node *previous, *curr = head;
+                while (--pos)
+                {
+                    previous = curr;
+                    curr = curr->next;
+                }
+                previous->next = curr->next;
+                curr->next->prev = previous;
+                delete curr;
+            }
         }
     }
-}
-void reverse()
-{
-    struct node *current = head;
-    while (current)
-    {
-        struct node *temp = current->next;
-        current->next = current->previous;
-        current->previous = temp;
-        current = current->previous;
-        if (current->next == NULL)
-        {
-            last = head;
-            head = current;
-        }
-    } 
-}
+};
+
 int main()
 
 {
-    cout << "before reversing" << endl;
-    append(2);
-    append(3);
-    append(5);
-    append(343);
-    append(232);
-    // append(2323);
-    // insert(5, 23232);
-    // erase(4);
-    append(4566);
-    // erase(2);
-    traverse();
-   
-    // reverse_traverse();
+    doublelist dl;
+    dl.append(1);
+    dl.append(2);
+    dl.append(3);
+    dl.append(10);
+    dl.append(343);
+    dl.reverse();
+    dl.traverse();
     return 0;
 } 
