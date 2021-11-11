@@ -81,4 +81,4 @@ int main()
     cout << "enter the value to search in bst" << endl;
     cin >> val;
     tree.search(val) ? cout << "present" : cout << "absent";
-} 
+}

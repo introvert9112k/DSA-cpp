@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
-
+// problem statement
+// Given a binary tree and an integer X. Your task is to complete the function countSubtreesWithSumX() that returns the count of the number of subtress having total node’s data sum equal to the value X.
 class Node
 {
 public:
@@ -31,33 +32,25 @@ public:
         new_node->right = construct();
         return new_node;
     }
-    // This will calculate the all the leafnodes paths
-    void leafpaths(Node *temp, vector<vector<int>> &ans, vector<int> &arr)
+    int countSubtreewithsumx(Node *root, int &ans, int x)
     {
-        if (!temp)
-            return;
-        arr.push_back(temp->data);
-        leafpaths(temp->left, ans, arr);
-        leafpaths(temp->right, ans, arr);
-        if (!temp->left and !temp->right)
-            ans.push_back(arr);
-
-        arr.pop_back();
+        if (!root)
+            return 0;
+        int lsum = countSubtreewithsumx(root->left, ans, x);
+        int rsum = countSubtreewithsumx(root->right, ans, x);
+        if ((lsum + rsum + root->data) == x)
+            ans++;
+        return lsum + rsum + root->data;
     }
-    // https://www.geeksforgeeks.org/given-a-binary-tree-print-all-root-to-leaf-paths/
 };
 
 int main()
 {
     binarytree tree;
     Node *root = tree.construct();
-    vector<vector<int>> ans;
-    vector<int> arr;
-    tree.leafpaths(root, ans, arr);
-    for (auto vec : ans)
-    {
-        for (auto x : vec)
-            cout << x << " ";
-        cout << endl;
-    }
-}
+    int x, ans = 0;
+    cout << "enter the value of x" << endl;
+    cin >> x;
+    tree.countSubtreewithsumx(root, ans, x);
+    cout << "No of subtrees with sum  " << x << " is : " << ans << endl;
+}  

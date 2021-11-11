@@ -51,6 +51,22 @@ public:
             return -1;
     }
     // strivers playlist
+    Node *lca1(Node *temp, int n1, int n2)
+    {
+        if (!temp)
+            return NULL;
+        if (temp->data == n1 or temp->data == n2)
+            return temp;
+        Node *left = lca1(temp->left, n1, n2);
+        Node *right = lca1(temp->right, n1, n2);
+        if (left and !right)
+            return left;
+        if (!left and right)
+            return right;
+        if (left and right)
+            return temp;
+        return NULL;
+    }
 };
 
 int main()
@@ -61,5 +77,8 @@ int main()
     cout << "Enter the two values" << endl;
     cin >> n1 >> n2;
     int ans = tree.lca(root, n1, n2);
-    ans != -1 ? cout << "lca is " << ans : cout << "no lca";
-}
+    ans != -1 ? cout << "lca is " << ans << endl : cout << "no lca" << endl;
+
+    Node *res = tree.lca1(root, n1, n2);
+    res ? cout << "lca is " << res->data << endl : cout << "no lca " << endl;
+} 

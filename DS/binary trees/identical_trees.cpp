@@ -55,12 +55,24 @@ bool isidentical(Node *temp1, Node *temp2)
         return false;
     return true;
     // check strivers playlist for better explanation
-} 
+}
+bool isidentical1(Node *temp1, Node *temp2)
+{
+    if (!temp1 or !temp2)
+        return temp1 == temp2;
+    if (temp1->data != temp2->data)
+        return false;
+    return isidentical(temp1->left, temp2->left) and isidentical(temp1->right, temp2->right);
+}
 int main()
 {
     binarytree tree1, tree2;
+    cout << "construct tree1" << endl;
     Node *root1 = tree1.construct();
+    cout << "Costruct tree2 " << endl;
     Node *root2 = tree2.construct();
     isidentical(root1, root2) ? (cout << "balanced") : (cout << "unbalcanced");
+    cout << endl;
+    isidentical1(root1, root2) ? (cout << "balanced") : (cout << "unbalcanced");
     return 0;
-}
+} 

@@ -62,7 +62,7 @@ void diameter1(node *temp, int &dia)
     dia = max(dia, lh + rh + 1);
     diameter1(temp->left, dia);
     diameter1(temp->right, dia);
-}
+} 
 // Time complexity O(N*N
 // space O(N*N)
 
