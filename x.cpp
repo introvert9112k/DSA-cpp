@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 #define int long long
 #define mp make_pair
-#define mod 1000000007 
+#define mod 1000000007
 #define ps(x, y) fixed << setprecision(y) << x
 #define pb push_back
 #define ppb pop_back
@@ -76,7 +76,7 @@ int power(int a, int b)
         b = b >> 1;
     }
     return result;
-} 
+}
 int gcd(int a, int b)
 {
     if (b == 0)
@@ -85,7 +85,7 @@ int gcd(int a, int b)
 }
 void solve()
 {
-
+    cout << "saisri" << endl;
 }
 int32_t main()
 {
@@ -97,5 +97,4 @@ int32_t main()
         solve();
     }
     return 0;
-}
-
+} 

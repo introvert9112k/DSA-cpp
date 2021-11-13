@@ -12,7 +12,7 @@
 #define endl "\n"
 #define pi pair<int, int>
 #define scan(h) scanf("%lld", &h)
-#define st(g, h) scanf("%lld %lld", &g, &h)
+#define st(g, h) scanf("%lld %lld", &g, &h) 
 #define print(g) printf("%lld", g)
 #define deb(x) cout << #x << " = " << x << endl;
 #define fo(i, n) for (int i = 0; i < n; i++)
