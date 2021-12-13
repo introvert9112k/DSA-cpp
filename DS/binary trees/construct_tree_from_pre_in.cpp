@@ -25,23 +25,14 @@ Node *construct(vector<int> &preorder, int pstart, int pend, vector<int> &inorde
     root->right = construct(preorder, pstart + numsleft + 1, pend, inorder, inroot + 1, inend, inmap);
     return root;
 }
-void preorder1(Node *root)
+void postorder(Node *root)
 {
     if (!root)
         return;
+    postorder(root->left);
+    postorder(root->right);
     cout << root->data << " ";
-    preorder1(root->left);
-    preorder1(root->right);
-}
-void inorder1(Node *root)
-{
-    if (!root)
-        return;
-    inorder1(root->left);
-    cout << root->data << " ";
-    inorder1(root->right);
-}
-
+} 
 int main()
 
 {
@@ -60,10 +51,7 @@ int main()
         inmap[inorder[i]] = i;
     }
     Node *root = construct(preorder, 0, n - 1, inorder, 0, n - 1, inmap);
-    cout << "inorder traversal of the tree is   " << endl;
-    inorder1(root);
-    cout << endl;
-    cout << "preorder traversal of the tree is " << endl;
-    preorder1(root);
+    cout << "post order traversal of the tree is :" << endl;
+    postorder(root);
     return 0;
 } 

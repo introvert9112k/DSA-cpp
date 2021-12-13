@@ -30,13 +30,13 @@ public:
         cout << "Enter the right child of the node " << new_node->data << endl;
         new_node->right = construct();
         return new_node;
-    } 
-    Node *treeconstruct(vector<int> &in, int inst, int inend, vector<int> &po, int post, int poend, unordered_map<int, int> &inmap)
+    }
+    Node *treeconstruct(vector<int> &in, int inst, int inend, vector<int> &po, int post, int poend, unordered_map<int, int> &inmap) 
     {
         if (post > poend or inst > inend)
             return NULL;
         Node *root = new Node(po[poend]);
-        int inroot = inmap[poend];
+        int inroot = inmap[po[poend]];
         int numsleft = inroot - inst;
         root->left = treeconstruct(in, inst, inroot - 1, po, post, post + numsleft - 1, inmap);
         root->right = treeconstruct(in, inroot + 1, inend, po, post + numsleft, poend - 1, inmap);
@@ -73,4 +73,4 @@ int main()
     cout << root->data << endl;
     cout << "preorder traversal of the tree is : " << endl;
     tree.preorder(root);
-}    
+}
