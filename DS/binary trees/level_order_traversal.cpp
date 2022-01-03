@@ -16,6 +16,8 @@ public:
 class binarytree
 {
 public:
+    // matrix for storing the values level by level
+    vector<vector<int>> ans;
     node *create()
     {
         int x;
@@ -53,10 +55,8 @@ public:
         }
     }
     // printing the nodes level by level
-    vector<vector<int>> levelorder(node *root)
+    void levelorder(node *root)
     {
-        // matrix for storing the values level by level
-        vector<vector<int>> ans;
         deque<node *> deque;
         // deque for stroing the nodes
         // intially push the root into deque
@@ -83,6 +83,17 @@ public:
         return ans;
         // reference : strivers tree's playlist
     }
+    // ---------Dfs Approach---------
+    void dfs(Node *root, int depth)
+    {
+        if (root == nullptr)
+            return;
+        if (ans.size() == depth)
+            ans.push_back(vector<int>());
+        ans[depth].push_back(root->val);
+        dfs(root->left, depth + 1);
+        dfs(root->right, depth + 1);
+    }
     //    code for finding the total no of nodes in tree
     int countnodes(node *temp)
     {
@@ -101,11 +112,14 @@ int main()
     node *root = tree.create();
     cout << "level order traversal of the tree is : " << endl;
     // tree.level_order(root);
-    vector<vector<int>> ans = tree.levelorder(root);
-    for (auto vect : ans)
+    tree.levelorder(root);
+    // ------for dfs--------
+    // tree.dfs(root, 0);
+    for (auto vect : tree.ans)
     {
         for (auto val : vect)
             cout << val << " ";
         cout << endl;
     }
 }
+ 

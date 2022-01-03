@@ -9,7 +9,7 @@ vector<int> bfsofGraph(int n, vector<int> graph[])
     vector<int> bfs;
     // visited array to keep track of visited vertices/nodes
     vector<bool> visited(n + 1,false);
-    for (int i = 1; i < n; i++) // traversing the every vertex,this make sures to cover all the components in disconnected graph
+    for (int i = 1; i <=n; i++) // traversing the every vertex,this make sures to cover all the components in disconnected graph
     {
         if (!visited[i]) // we only traverse vertices that is unvisited,so checking whether the vertex is visited or not
         {
@@ -61,4 +61,4 @@ int main()
         cout << vertex << " ";
 
     return 0;
-}
+} 

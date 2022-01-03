@@ -25,7 +25,7 @@ node *create()
     cout << "Enter the right child of the node  " << new_node->data << endl;
     new_node->right = create();
     return new_node;
-} 
+}
 void preorder(node *temp)
 {
     if (!temp)
@@ -33,7 +33,7 @@ void preorder(node *temp)
     cout << temp->data << " ";
     preorder(temp->left);
     preorder(temp->right);
-} 
+}
 // one variation in iterative_preoder
 void iterative_preorder(node *root)
 {
@@ -49,24 +49,21 @@ void iterative_preorder(node *root)
         if (temp->left)
             stack.push(temp->left);
     }
-} 
-void iterative_preorder1(node* temp)
+}
+void iterative_preorder1(node *temp)
 {
     stack<node *> stack;
-    while(temp!=NULL or !stack.empty())
+    while (temp != NULL or !stack.empty())
     {
-        if(temp!=NULL)
+        while (temp != NULL)
         {
             cout << temp->data << " ";
             stack.push(temp);
             temp = temp->left;
         }
-        else 
-        {
-            temp = stack.top();
-            stack.pop();
-            temp = temp->right;
-        }
+        temp = stack.top();
+        stack.pop();
+        temp = temp->right;
     }
 } 
 int main()
@@ -81,4 +78,4 @@ int main()
     iterative_preorder1(root);
 
     return 0;
-} 
+}

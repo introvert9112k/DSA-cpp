@@ -63,7 +63,50 @@ bool isidentical1(Node *temp1, Node *temp2)
     if (temp1->data != temp2->data)
         return false;
     return isidentical(temp1->left, temp2->left) and isidentical(temp1->right, temp2->right);
+} 
+// ---------using bfs------------
+bool check(TreeNode *root1, TreeNode *root2)
+{
+    if (root1 == NULL and root2 == NULL)
+        return true;
+    if (root1 == NULL or root2 == NULL)
+        return false;
+    if (root1->val != root2->val)
+        return false;
+    return true;
 }
+bool bfs(TreeNode *root1, TreeNode *root2)
+{
+    queue<TreeNode *> q1, q2;
+    q1.push(root1);
+    q2.push(root2);
+    while (!q1.empty() and !q2.empty())
+    {
+        TreeNode *node1 = q1.front(), *node2 = q2.front();
+        q1.pop();
+        q2.pop();
+        if (!check(node1, node2))
+            return false;
+        if (node1 != NULL)
+        {
+            if (!check(node1->left, node2->left))
+                return false;
+            if (node1->left != NULL)
+            {
+                q1.push(node1->left);
+                q2.push(node2->left);
+            }
+            if (!check(node1->right, node2->right))
+                return false;
+            if (node1->right != NULL)
+            {
+                q1.push(node1->right);
+                q2.push(node2->right);
+            }
+        }
+    }
+    return true;
+} 
 int main()
 {
     binarytree tree1, tree2;
@@ -75,4 +118,4 @@ int main()
     cout << endl;
     isidentical1(root1, root2) ? (cout << "balanced") : (cout << "unbalcanced");
     return 0;
-} 
+}  

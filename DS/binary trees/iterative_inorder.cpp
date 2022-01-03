@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 struct node
 {
@@ -12,12 +12,12 @@ struct node
     }
 };
 node *root = NULL;
-node* construct()
+node *construct()
 {
     int x;
     cout << "Enter the data" << endl;
     cin >> x;
-    if(x==-1)
+    if (x == -1)
         return NULL;
     node *curr = new node(x);
     cout << "Enter the left child of the node " << curr->data << endl;
@@ -25,32 +25,29 @@ node* construct()
     cout << "Enter the right child of the node " << curr->data << endl;
     curr->right = construct();
     return curr;
-} 
-void inorder(node* temp)
+}
+void inorder(node *temp)
 {
-     if(!temp)
-         return;
-     inorder(temp->left);
-     cout << temp->data <<" ";
-     inorder(temp->right);
-} 
-void iterative_inorder(node* temp)
+    if (!temp)
+        return;
+    inorder(temp->left);
+    cout << temp->data << " ";
+    inorder(temp->right);
+}
+void iterative_inorder(node *temp)
 {
     stack<node *> stack;
-    while(temp!=NULL or !stack.empty())
+    while (temp != NULL or !stack.empty())
     {
-        if(temp!=NULL)
+        while (temp != NULL)
         {
             stack.push(temp);
             temp = temp->left;
         }
-        else
-        {
-            temp = stack.top();
-            cout << temp->data;
-            stack.pop();
-            temp = temp->right;
-        }
+        temp = stack.top();
+        cout << temp->data;
+        stack.pop();
+        temp = temp->right;
     }
 } 
 int main()
@@ -58,5 +55,4 @@ int main()
     root = construct();
     cout << "recursive inorder traversal of the tree is " << endl;
     inorder(root);
-
-} 
+}
