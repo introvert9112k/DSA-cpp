@@ -99,7 +99,6 @@ public:
         return burntime;
     }
 };
-
 int main()
 {
     binarytree tree;

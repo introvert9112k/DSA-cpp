@@ -29,19 +29,19 @@ int main()
         cin >> v1 >> v2;
         graph[v1].push_back(v2);
         graph[v2].push_back(v1);
-    }
+    } 
     for (int i = 1; i <= n; i++)
     {
-        if (!visited[i])
+        if (!visited[i])  
         {
-            if (bfsofGraph(i, -1, visited, graph))
+            if (dfsofGraph(i, -1, visited, graph))
             {
                 flag = false;
                 cout << "cycle detected" << endl;
                 break;
             }
         }
-    }
+    } 
     if (flag)
         cout << "cycle not detected" << endl;
     return 0;

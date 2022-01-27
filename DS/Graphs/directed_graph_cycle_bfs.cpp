@@ -29,7 +29,7 @@ bool serachforcycle(int n, vector<int> graph[])
         }
     }
     return cnt == n;
-}
+} 
 int main()
 {
     int n, m;

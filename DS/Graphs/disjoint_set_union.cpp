@@ -7,7 +7,8 @@ private:
     int n;
     vector<int> parent;
     vector<int> rank;
-
+    //    rank represents the intial height of the tree
+    // Intially all the nodes are connected to themselves, that mean parent of node is node itself
 public:
     disjoint(int _n)
     {
@@ -15,9 +16,12 @@ public:
         for (int i = 0; i < n; i++)
         {
             parent.push_back(i);
+            // making parent of node to node itself
             rank.push_back(0);
+            // intially the rank of all teh nodes is zero
         }
     }
+    // This finds the ulitmate parent of the node,here the path compression  occurs, if we do not make the path compression then time complexity becomes o(logn)
     int findparent(int node)
     {
         if (node == parent[node])
@@ -42,6 +46,8 @@ public:
     {
         return findparent(node1) == findparent(node2);
     }
+    // Time complexity is O(4K) i.e constant
+    // union and find operation can be done in constant time,hence they are widely used in competative programming
 }; 
 
 int main()
