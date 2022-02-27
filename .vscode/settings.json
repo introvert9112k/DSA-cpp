@@ -2,7 +2,9 @@
     "files.associations": {
         "iostream": "cpp",
         "array": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "bitset": "cpp",
+        "set": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled",
     "python.testing.unittestArgs": [

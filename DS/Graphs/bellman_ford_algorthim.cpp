@@ -2,6 +2,9 @@
 // it is not used for Undirected graph,it works when there is negative edges tooo
 // In case of Negative cycle it gives wrong result,we should check whether there is negative cycle or not
 // In case of negative cycle shortest distance is not possible
+// it can be used to find the negative cycles in the graph
+// Time complexity is  O((N-1)xE) which is not preferrable when compared to dijkstra's algorthim
+// but it helps in finding whether there is negative cycle or not
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -48,8 +51,9 @@ public:
                 if ((distance[edge.node1] + edge.weight) < distance[edge.node2])
                     distance[edge.node2] = distance[edge.node1] + edge.weight;
             }
-        } 
+        }
         bool flag = false;
+        // checking for negative cycle in graph,if we find negative then the shortest distance is not possible
         for (auto &edge : edges)
             if (distance[edge.node1] + edge.weight < distance[edge.node2])
             {
@@ -57,13 +61,14 @@ public:
                 flag = true;
                 break;
             }
+        // if negative cycle not found print the shortest distance
         if (!flag)
         {
             for (int i = 0; i < _n; i++)
                 cout << i << " " << distance[i] << endl;
         }
     }
-};
+}; 
 
 int main()
 {
