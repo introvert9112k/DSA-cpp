@@ -32,7 +32,7 @@ public:
             parent.push_back(i);
             rank.push_back(0);
         }
-    } 
+    }
     int findparent(int node)
     {
         if (node == parent[node])
@@ -71,7 +71,7 @@ public:
             int u, v, w;
             cin >> u >> v >> w;
             edges.push_back(Node(u, v, w));
-        }
+        } 
         sort(edges.begin(), edges.end(), cmp);
         for (auto &edge : edges)
         {

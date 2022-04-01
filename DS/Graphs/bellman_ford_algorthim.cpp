@@ -33,7 +33,7 @@ public:
         _m = m;
         _source = source;
     }
-    void bellmanford()
+    void bellmanford() 
     {
         vector<Node> edges;
         vector<int> distance(_n, INT_MAX);
@@ -76,4 +76,4 @@ int main()
     cin >> n >> m >> source;
     Graph g(n, m, source);
     g.bellmanford();
-}
+} 

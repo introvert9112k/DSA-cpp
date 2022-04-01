@@ -87,7 +87,7 @@ void nextgreater(vector<int> &arr)
     for (auto x : temp)
         cout << x << " ";
     cout << endl;
-}
+} 
 void nextsmaller(vector<int> &arr)
 {
     stack<int> stack;
