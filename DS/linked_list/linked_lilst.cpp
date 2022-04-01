@@ -96,7 +96,7 @@ int sum(struct node *temp = head)
         temp = temp->next;
     }
     return s;
-} 
+}   
 
 int max(struct node *temp = head)
 {
