@@ -149,4 +149,4 @@ int32_t main()
     cin >> infix;
     cout << infixToPostfix(infix) << endl;
     return 0;
-}
+} 
