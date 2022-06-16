@@ -3,27 +3,24 @@
 #include <algorithm>
 
 using namespace std;
-bool palindrome(string original, int n)
-{
-    static int cnt = 0;
-    if (cnt < n/2)
-    {
-        if (original[cnt] != original[n - cnt - 1])
-            return false;
-        cnt++;
-        return palindrome(original, n);
-    }
-    return true;
-}
 
+bool checkpalindrome(int i, string &s, int n)
+{
+    if (i >= n - 1 - i)
+        return true;
+    if (s[i] != s[n - 1 - i])
+        return false;
+    return checkpalindrome(i + 1, s, n);
+}
 int main()
 
 {
-    string original;
-    cin >> original;
-    if (palindrome(original, original.length()))
-        cout << original << "  is pallindrome" << endl;
+    string s;
+    cin >> s;
+    int n = s.length();
+    if (checkpalindrome(0, s, n))
+        cout << "is palindrome" << endl;
     else
-        cout << original << " is not palindrome" << endl;
+        cout << "not a palindrome" << endl;
     return 0;
 } 
