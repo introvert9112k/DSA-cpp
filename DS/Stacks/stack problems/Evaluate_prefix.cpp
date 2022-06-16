@@ -2,7 +2,7 @@
 using namespace std;
 // Prefix expression is similar to the Postfix exression evaluation,The only thing is we traverse from right to left in Prefix evaluation instead of left to right
 void EvaluatePostfix(vector<string> characters)
-{
+{ 
     stack<int> st;
     for (int i = characters.size() - 1; i >= 0; i--)
     {

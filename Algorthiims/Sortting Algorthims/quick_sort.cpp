@@ -16,7 +16,7 @@
 #define print(g) printf("%lld", g)
 #define deb(x) cout << #x << " = " << x << endl;
 #define fo(i, n) for (int i = 0; i < n; i++)
-#define fok(i, k, n) for (int i = k; i >= n; i--)
+#define fok(i, k, n) for (int i = k; i >= n; i--) 
 
 using namespace std;
 
@@ -49,7 +49,7 @@ int power(int a, int b)
 // After partition all the elements which are smallet than pivot will be on left side and all greater elements will be on right side of pivot
 // equal elements to pivot are also left
 
-//pivot element as first element
+//pivot element as first element 
 int quickfirst(int *arr, int l, int h)
 {
     int pivot = arr[l];
