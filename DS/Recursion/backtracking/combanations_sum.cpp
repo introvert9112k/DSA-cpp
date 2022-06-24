@@ -5,7 +5,8 @@ using namespace std;
 
 // The same number may be chosen from candidates an unlimited number of times. Two combinations are unique if the frequency of at least one of the chosen numbers is different.
 
-void combinations(int index, vector<int> &arr, vector<int> &ds, int target)
+// -----------Strivers Code ------------
+void combinations1(int index, vector<int> &arr, vector<int> &ds, int target)
 {
 
     // base case
@@ -26,17 +27,40 @@ void combinations(int index, vector<int> &arr, vector<int> &ds, int target)
     // Make sure to remove the elements inserted into ds after the left call is finished
     if (arr[index] <= target) // include only when the arr[index] <= target
     {
-        ds.push_back(arr[index]);                          // pushing the value in to ds
-        combinations(index, arr, ds, target - arr[index]); // calling the function with same index and changing the target value
-        ds.pop_back();                                     // popping the element after the call considering the element is finished
+        ds.push_back(arr[index]);                           // pushing the value in to ds
+        combinations1(index, arr, ds, target - arr[index]); // calling the function with same index and changing the target value
+        ds.pop_back();                                      // popping the element after the call considering the element is finished
     }
-    combinations(index + 1, arr, ds, target); // call for not considering the element
-} 
+    combinations1(index + 1, arr, ds, target); // call for not considering the element
+}
 // Time complexity ---- O(2^target x k)
-// k is the average length of the all the combinations ,because we are printing the combination which would take O(length of combination) 
+// k is the average length of the all the combinations ,because we are printing the combination which would take O(length of combination)
 // So we cannot predict the length of each combination so we take the average value
 
 // leetcod  :https://leetcode.com/problems/combination-sum/
+
+// -------My code----------------
+void combinations2(int i, int n, int sum, int target, vector<int> &arr, vector<int> &ds)
+{
+    if (i == n || sum == target)
+    {
+        if (sum == target)
+        {
+            for (auto &val : ds)
+                cout << val << " ";
+            cout << endl;
+        }
+        return;
+    }
+    if (sum > target) /*valid only when all the numbers are +ve*/
+        return;
+    ds.push_back(arr[i]);
+    sum += arr[i];
+    combinations2(i, n, sum, target, arr, ds);
+    ds.pop_back();
+    sum -= arr[i];
+    combinations2(i + 1, n, sum, target, arr, ds);
+} 
 int main()
 
 {
@@ -45,9 +69,11 @@ int main()
     vector<int> arr(n);
     for (int i = 0; i < n; i++)
         cin >> arr[i];
-    cout << "Enter the target" << endl;
     cin >> target;
     vector<int> ds;
-    combinations(0, arr, ds, target);
+    cout << "combinations1 : " << endl;
+    combinations1(0, arr, ds, target);
+    cout << "combinations2 : " << endl;
+    combinations2(0, n, 0, target, arr, ds);
     return 0;
-} 
+}

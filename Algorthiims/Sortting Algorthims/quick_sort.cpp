@@ -75,31 +75,6 @@ int quickfirst(int *arr, int l, int h)
     return j;
 }
 
-// pivot element as last element
-int quicklast(int *arr, int l, int h)
-{
-    int pivot = arr[h];
-    int i = l;
-    int j = h;
-    while (i < j)
-    {
-        // find the element which is greater than pivot from left
-        while (arr[i] < pivot)
-            i++;
-        // find the element which is smaller than the pivot from right
-        while (arr[j] >= pivot)
-            j--;
-        // swap these elements
-        if (i < j)
-            swap(arr[i], arr[j]);
-    }
-    // now i will points to the correct location of the pivot element in sorted array
-    // swap these elements
-    swap(arr[i], arr[h]);
-    // now return i
-    return i;
-}
-
 void quicksort(int *arr, int l, int h)
 {
     if (l < h)
@@ -115,7 +90,7 @@ void quicksort(int *arr, int l, int h)
         quicksort(arr, pivot + 1, h);
     }
     // in this way for each call one element is placed at correct location
-}
+} 
 int32_t main()
 {
 

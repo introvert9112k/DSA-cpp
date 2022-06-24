@@ -2,6 +2,8 @@
 // given an array find the all the permutations of the array
 #include <bits/stdc++.h>
 using namespace std;
+// Intution
+// We are making sure that every element is at every index 
 void permutations(int index, vector<int> &arr)
 {
     if (index == arr.size())
@@ -18,7 +20,7 @@ void permutations(int index, vector<int> &arr)
         swap(arr[index], arr[i]);
     }
 }
-// T ----- n!xn
+// T ----- O(n!xn)
 // because function calls are made n! times and for each call for loop is running for n times
 // S -- O(1)
 void permutations(int index, string &str)
@@ -51,4 +53,4 @@ int main()
     cout << "permutations are : " << endl;
     permutations(0, str);
     return 0;
-} 
+}
