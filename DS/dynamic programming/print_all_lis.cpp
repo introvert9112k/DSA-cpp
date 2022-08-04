@@ -69,6 +69,5 @@ int main()
     for (int i = 0; i < n; i++)
         cin >> arr[i];
     print_all_lis(arr, dp, findmaxlenlis(arr, dp));
-
     return 0;
-} 
+}  

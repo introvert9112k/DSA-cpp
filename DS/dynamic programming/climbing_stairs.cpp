@@ -52,8 +52,37 @@ int tabulization(int n)
     }
     return dp[n];
 }
-int main()
-
+// no of ways to reach n stairs, when allowed steps are 1,2,3.......n
+void recursion(int ind, int n, int &cnt, string path)
+{
+    if (ind == 0)
+    {
+        cout << path << endl;
+        cnt++;
+        return;
+    }
+    if (ind < 0)
+        return;
+    for (int i = 1; i <= n; i++)
+    {
+        recursion(ind - i, n, cnt, path + to_string(i));
+    }
+}
+void memoziation(int ind, int n, vector<int> &dp)
+{
+    if (ind == 0)
+        return 1;
+    if (ind < 0)
+        return 0;
+    if (dp[ind] != 0)
+        return dp[ind];
+    for (int i = 1; i <= n; i++)
+    {
+        dp[ind] += memoziation(ind - i, n, dp);
+    }
+    return dp[ind];
+}  
+int main() 
 {
     int n;
     cin >> n;
@@ -61,7 +90,10 @@ int main()
     cout << "the ways we can reach the stairs is : " << endl;
     // cout << recursive(n, "") << endl;
     // cout << memoziation(n, "",qb) << endl;
-    cout << tabulization(n) << endl;
-
+    // cout << tabulization(n) << endl;
+    // int cnt = 0;
+    // recursion(n, n, cnt, "");
+    // cout << cnt << endl;
+    
     return 0;
 }
