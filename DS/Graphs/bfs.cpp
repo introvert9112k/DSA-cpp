@@ -36,7 +36,7 @@ vector<int> bfsofGraph(int n, vector<int> graph[])
 } 
 // --------------Compplexities-------------
 // T --------- O(N+2*E) N for traversing the all vertices, E for traversing all the edges in graph overall
-// Space ---------- O(N+2*E) + O(N) + O(N) for Adjacency list,visited array,bfs vector
+// Space ---------- O(N) + O(N) + O(N) for Adjacency list,visited array,bfs vector
 
 // -----------Connected Components------------
 // No of connected components is equal to the numbers of times the if loop is excuted

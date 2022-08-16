@@ -1,23 +1,20 @@
-#include<iostream>
-#include<string>
-#include<algorithm>
-
+#include <bits/stdc++.h>
 using namespace std;
-void reverse(string &s,int i, int mid, int len)
+
+bool palindromeCheck(string &s, int i, int n)
 {
-    if(i == mid)
-        return;
-    swap(s[i], s[len - i - 1]);
-    return reverse(s, i + 1, mid, len);
+    if (s[i] != s[n - i - 1])
+        return false;
+    if (i > n - i - 1)
+        return true;
+    return palindromeCheck(s, i + 1, n);
 }
-int main() 
+int main()
 
 {
     string s;
     cin >> s;
-    int mid = s.length() >> 1;
-    reverse(s, 0, mid, s.length());
-    cout << s << endl;
+    string ans = palindromeCheck(s, 0, s.length()) ? "isPalindrome" : "notPalindrome";
+    cout << ans << endl;
     return 0;
-
 } 

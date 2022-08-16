@@ -60,7 +60,7 @@ void combinations2(int i, int n, int sum, int target, vector<int> &arr, vector<i
     ds.pop_back();
     sum -= arr[i];
     combinations2(i + 1, n, sum, target, arr, ds);
-} 
+}
 int main()
 
 {
@@ -76,4 +76,4 @@ int main()
     cout << "combinations2 : " << endl;
     combinations2(0, n, 0, target, arr, ds);
     return 0;
-}
+} 
