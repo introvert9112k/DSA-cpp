@@ -14,7 +14,8 @@
     "tuple": "cpp",
     "utility": "cpp",
     "xiosbase": "cpp",
-    "xstring": "cpp"
+    "xstring": "cpp",
+    "vector": "cpp"
   },
   "C_Cpp.errorSquiggles": "Disabled",
   "python.testing.unittestArgs": ["-v", "-s", "./DS", "-p", "test*.py"],

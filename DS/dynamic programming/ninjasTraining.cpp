@@ -58,4 +58,4 @@ int ninjaTraining(int n, vector<vector<int>> &points)
     // Write your code here.
     vector<vector<int>> dp(n, vector<int>(4, -1));
     return maxPoints(n - 1, 3, points, dp);
-}
+} 
