@@ -15,7 +15,13 @@
     "utility": "cpp",
     "xiosbase": "cpp",
     "xstring": "cpp",
-    "vector": "cpp"
+    "vector": "cpp",
+    "*.tcc": "cpp",
+    "deque": "cpp",
+    "list": "cpp",
+    "string": "cpp",
+    "unordered_map": "cpp",
+    "unordered_set": "cpp"
   },
   "C_Cpp.errorSquiggles": "Disabled",
   "python.testing.unittestArgs": ["-v", "-s", "./DS", "-p", "test*.py"],

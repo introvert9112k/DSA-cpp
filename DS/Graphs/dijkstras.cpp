@@ -58,7 +58,7 @@ public:
         }
         return distance;
     }
-};
+}; 
 
 int main()
 {

@@ -3,7 +3,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 // strivers approach
-void shortestdistance(int source, vector<int> graph[], vector<int> &distance)
+void shortestDistanceBFs(int source, vector<int> graph[], vector<int> &distance)
 {
     queue<int> q;
     q.push(source);
@@ -16,40 +16,34 @@ void shortestdistance(int source, vector<int> graph[], vector<int> &distance)
         {
             if (distance[node] + 1 < distance[adjnode])
             {
-                distacne[adjnode] = distance[node] + 1;
-                q.push(adjnode);
-            }
-        }
-    }
-}
-// easiest approach
-void shortestdistance(int n, int source, vector<int> graph[], vector<int> &distance)
-{
-    vector<int> visited(n, 0);
-    queue<int> q;
-    q.push(source);
-    visited[source] = 1;
-    distance[source] = 0;
-    while (!q.empty())
-    {
-        int node = q.front();
-        q.pop();
-        for (auto &adjnode : graph[node])
-        {
-            if (!visited[adjnode])
-            {
                 distance[adjnode] = distance[node] + 1;
-                visited[adjnode] = 1;
                 q.push(adjnode);
             }
         }
     }
+} 
+void shortestDistanceDFs(int source, vector<int> graph[], vector<int> &distance)
+{
+    for (auto &adjNode : graph[source])
+    {
+        if ((distance[source] + 1) < distance[adjNode])
+        {
+            distance[adjNode] = distance[source] + 1;
+            shortestDistanceDFs(adjNode, graph, distance);
+        }
+    }
+} 
+void printShortestDistances(vector<int> &distances)
+{
+    for (auto &dist : distances)
+        cout << dist << " ";
+    cout << endl;
 }
 int main()
 {
     int n, m;
     cin >> n >> m;
-    vector<int> graph[n], distance(n, INT_MAX);
+    vector<int> graph[n], distance1(n, INT_MAX), distance2(n, INT_MAX);
     for (int i = 0; i < m; i++)
     {
         int v1, v2;
@@ -59,11 +53,9 @@ int main()
     }
     int source;
     cin >> source;
-    shortestdistance(n, source, graph, distance);
-    // shortestdistance(source, graph, distance);
-    cout << "the shortest distances from the source to all nodes is : " << endl;
-    for (int i = 0; i < n; i++)
-    {
-        cout << i << " " << distance[i] << endl;
-    }
-}
+    shortestDistanceBFs(source, graph, distance1);
+    printShortestDistances(distance1);
+    distance2[source] = 0;
+    shortestDistanceDFs(source, graph, distance2);
+    printShortestDistances(distance2);
+} 
