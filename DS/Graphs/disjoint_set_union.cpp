@@ -46,7 +46,8 @@ public:
     {
         return findparent(node1) == findparent(node2);
     }
-    // Time complexity is O(4K) i.e constant
+    // Time complexity of find and union  O(4K) i.e constant
+    //where k is nearly equal to 1
     // union and find operation can be done in constant time,hence they are widely used in competative programming
 }; 
 
@@ -60,4 +61,4 @@ int main()
     // for the given node we can find the parent
     // For the given two nodes we can check whether they belong to same component or not .
     // if the parent of two node is same then they belong to same component else not.
-}
+} 

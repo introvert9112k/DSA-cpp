@@ -11,46 +11,47 @@
 
 // We move to our next unmarked number 5 and mark all multiples of 5 and are greater than or equal to the square of it.
 
-// We continue this process and our final values that left in the array is prime numbers 
+// We continue this process and our final values that left in the array is prime numbers
 
 #include <iostream>
 #include <string>
 #include <algorithm>
 #include <math.h>
 using namespace std;
-void seive_of_erathromas(int *array,long long int n) 
+void seive_of_erathromas(int *array, long long int n)
 {
-//   odd numbers can be prime numbers so first we will make the odd places values as 1 and check them only for prime
-  for(long long int i=3; i<=n; i+=2)
-          array[i] = 1;
- 
-  for(long long int i = 3; i<=sqrt(n); i++) 
-  {
-      if(array[i]==1) 
-      {
-        for(long long int j = i*i; j<=n; j+=i)
-            array[j] = 0;               
-      } 
-  } 
+  //   odd numbers can be prime numbers so first we will make the odd places values as 1 and check them only for prime
+  for (long long int i = 3; i <= n; i += 2)
+    array[i] = 1;
 
-  array[2] = 1; 
-  cout<< "the prime numbers that are less than are equal to  "<<n << " are : " <<endl;
-  cout<< "2" << " ";
-  for(long long int k =3; k<=n; k+=2 )
+  for (long long int i = 3; i <= sqrt(n); i++)
   {
-      if(array[k] == 1)
-        cout<< k << " ";
-  } 
-}  
+    if (array[i] == 1)
+    {
+      for (long long int j = i * i; j <= n; j += i)
+        array[j] = 0;
+    }
+  }
+
+  array[2] = 1;
+  cout << "the prime numbers that are less than are equal to  " << n << " are : " << endl;
+  cout << "2"
+       << " ";
+  for (long long int k = 3; k <= n; k += 2)
+  {
+    if (array[k] == 1)
+      cout << k << " ";
+  }
+}
 int main()
 
 {
-    long long int n;
-    cin>>n;
-    // let us create the array of that size and intialise all the values to zero 
-    int array[n] = {0}; //intializing all the array element to zero
-    seive_of_erathromas(array,n);
-    return 0; 
-}   
+  long long int n;
+  cin >> n;
+  // let us create the array of that size and intialise all the values to zero
+  int array[n] = {0}; // intializing all the array element to zero
+  seive_of_erathromas(array, n);
+  return 0;
+}
 
 // the value of n should be around  500000
