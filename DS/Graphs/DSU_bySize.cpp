@@ -6,8 +6,8 @@ class disjoint
 private:
     int n;
     vector<int> parent;
-    vector<int> rank;
-    /*rank represents the intial height of the tree
+    vector<int> size;
+    /*size represents the intial size of the tree
     Intially all the nodes are connected to themselves, that mean parent of node is node itself
     */
 public:
@@ -18,8 +18,8 @@ public:
         {
             parent.push_back(i);
             // making parent of node to node itself
-            rank.push_back(0);
-            // intially the rank of all teh nodes is zero
+            size.push_back(1);
+            // intially the size of all the nodes is 1
         }
     }
     /* This finds the ulitmate parent of the node,here the path compression  occurs, if we do not make the path compression then time complexity becomes o(logn)
@@ -45,14 +45,15 @@ public:
         /*If the both the parents equal,then they belong to same component so no need to make union*/
         if(up1 != up2) 
         {
-            if (rank[up1] > rank[up2])
-              parent[up2] = up1;
-            else if (rank[up2] > rank[up1])
-                parent[up1] = up2;
-            else
+            if (size[up1] > size[up2])
             {
                 parent[up2] = up1;
-                rank[up1]++;
+                size[up1] += size[up2];
+            } 
+            else 
+            {
+                parent[up1] = up2;
+                size[up2] += size[up1];
             }
         }
     } 
