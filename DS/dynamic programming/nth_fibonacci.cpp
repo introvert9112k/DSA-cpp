@@ -31,7 +31,7 @@ int memoziation(int n, vector<int> &dp)
 // Eliminating the recursion stack space
 int tabulation(int n)
 {
-    // here we are using tabularisation to find the nth fibonacii
+    // here we are using tabulation to find the nth fibonacii
     // there two ways we can approach the problem in dp,one is using the memoziation and other is the tabularization
     int dp[n + 1];
     dp[0] = 0;
@@ -39,7 +39,7 @@ int tabulation(int n)
     for (int i = 2; i <= n; i++)
         dp[i] = dp[i - 1] + dp[i - 2];
     return dp[n];
-}
+} 
 
 // just manipulating with the two pointers
 // Time Complexity : O(n)
