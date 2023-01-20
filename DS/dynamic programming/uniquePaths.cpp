@@ -20,7 +20,7 @@ private:
       Time Complexity : O(m*n)
       Space Complexity : O(m*n) + O(m+n-2)
       Recursion stak space is equal to path length i.e m - 1 + n -1
-      Recursion stack space and the dp array space.
+      Dp Array takes O(m*n) space.
     */
     int countPaths2(int row, int col, vector<vector<int>> &dp)
     {
