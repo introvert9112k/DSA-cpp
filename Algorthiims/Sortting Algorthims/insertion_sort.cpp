@@ -1,40 +1,35 @@
-// in this we will look at the insertion sort algorthim 
-#include<iostream>
-#include<string>
-#include<algorithm>
-
+/*--------------------Insertion Sort-----------------------*/
+#include <bits/stdc++.h>
 using namespace std;
-void insertion_sort(int *array, int length)
+/*
+Algorithm :
+1.Intution of the Algorithm is selected an index i and insert the element in its corresponding position in the arr[0,i-1].
+2.For the index i,the array [0,i-1] would be sorted,so for the value arr[i],find the correct position of it in the sorted arr[0,i-1] and insert it there.
+
+Time Compelxity : O(n*n)
+Space Complexity : O(1)
+*/
+void insertionSort(int n, vector<int> &arr)
 {
-    for (int i = 0; i < length; i++)
+    for (int i = 1; i < n; ++i)
     {
-        int k = i;
-        while (array[k-1] > array[k] && k > 0)
-
+        for (int j = i; j > 0 && arr[j - 1] > arr[j]; --j)
         {
-            int temp = array[k-1]; 
-            array[k-1] = array[k];
-            array[k] = temp; 
-            k--;
-        }     
-        
+            swap(arr[j], arr[j - 1]);
+        }
     }
-    
-} 
-
-int main() 
-
+}
+int main()
 {
-         int num;
-         cout<< "enter the size of the array"<<endl;
-         cin>>num;
-         int array[num];
-         for(int i=0; i<num; i++)
-             cin>>array[i];
-         insertion_sort(array,num); 
-         cout<< "the array elements after sorting is "<<endl; 
-          for (int x : array) 
-            cout<< x<<endl;
-           return 0;
-
+    int n;
+    cin >> n;
+    vector<int> arr(n);
+    for (int i = 0; i < n; ++i)
+    {
+        cin >> arr[i];
+    }
+    insertionSort(n, arr);
+    for (auto &val : arr)
+        cout << val << " ";
+    return 0;
 } 

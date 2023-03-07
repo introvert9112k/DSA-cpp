@@ -50,6 +50,12 @@ int power(int a, int b)
 // equal elements to pivot are also left
 
 //pivot element as first element 
+/*
+Time Complexity : O(nlogn)
+One thing to be noted that the array is not splitted in equal halves in the quicksort. The array is splitted based on the partitionIndex.
+Space Complexity : O(1)
+Does not use any  extra space, If the recursion stack space is considered then it would O(logn) space.
+*/
 int quickfirst(int *arr, int l, int h)
 {
     int pivot = arr[l];
@@ -58,10 +64,10 @@ int quickfirst(int *arr, int l, int h)
     while (i < j)
     {
         // find the element which is greater than the pivot from left
-        while (arr[i] <= pivot)
+        while (i <= h-1 && arr[i] <= pivot)
             i++;
         // find the element which is smaller than the pivot from right
-        while (arr[j] > pivot)
+        while (j >= l+1 && arr[j] > pivot)
             j--;
         // swap these elements and continue
         if (i < j)
@@ -90,6 +96,9 @@ void quicksort(int *arr, int l, int h)
         quicksort(arr, pivot + 1, h);
     }
     // in this way for each call one element is placed at correct location
+    /*-----------------------NOTE-----------------------------------
+    If the array is sorted and the pivot is poorly picked (e.g for sorted array if the pivot is first element) then the time complexity of the algo would be O(n*n) 
+    */
 } 
 int32_t main()
 {
@@ -105,4 +114,4 @@ int32_t main()
             cout
         << arr[i] << " ";
     return 0;
-}
+}  

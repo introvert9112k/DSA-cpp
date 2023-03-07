@@ -1,54 +1,38 @@
-// in this we will look at the selection sort algorthim
-#include<iostream>
-#include<string>
-#include<algorithm>
-
+/*-------------------------Selection Sort ------------------------*/
+#include <bits/stdc++.h>
 using namespace std;
+/*
+Algorithm :
+1. Intuition behind this algo is,to find the minimum element in each iteration and place in its corresponding position.
+2.For the index i arr[0,i-1] will be sorted and arr[i+1,n-1] is unsorted.
+3.Find the minimum element in the arr[i,n-1] and swap the value with the current Index i.e 'i'.
 
-int minimum_element(int start, int end, int *array)
-{  
-   int min_value = array[start];
-   int index = start;
-    for (int i = start; i < end; i++)
+Time Complexity  : O(n*n)
+Space Complexity : O(1)
+*/
+void selectionSort(int n, vector<int> &arr)
+{
+    for (int i = 0; i < n; ++i)
     {
-        if(array[i] < min_value)
-         {
-              min_value = array[i];
-              index = i; 
-         } 
-    } 
-    return index;
-    
-} 
-
-
-void selection_sort(int *array , int length)
-{
-          for (int i = 0; i < length-1; i++)
-          {
-              int index = minimum_element(i,length,array);
-            //   cout<< "  " << index <<endl; 
-              int temp = array[index];
-              array[index] = array[i];
-              array[i] = temp; 
-          } 
-          
+        int minIndex = i;
+        for (int j = i + 1; j < n; ++j)
+        {
+            if (arr[j] < arr[minIndex])
+                minIndex = j;
+        }
+        swap(arr[i], arr[minIndex]);
+    }
 }
-
-int main() 
-
+int main()
 {
-         int num;
-         cout<< "enter the size of the aray"<<endl;
-         cin>>num;
-         int array[num];
-         for(int i=0; i<num; i++)
-             cin>>array[i];
-         selection_sort(array,num);
-         cout<< "the array after sorted is " <<endl;
-         for(int x : array)
-            cout<< x <<endl;
-        // cout << "the minimum element is at index : " << minimum_element(0,num,array);
-       return 0; 
-  
-}  
+    int n;
+    cin >> n;
+    vector<int> arr(n);
+    for (int i = 0; i < n; ++i)
+    {
+        cin >> arr[i];
+    }
+    selectionSort(n, arr);
+    for (auto &val : arr)
+        cout << val << " ";
+} 

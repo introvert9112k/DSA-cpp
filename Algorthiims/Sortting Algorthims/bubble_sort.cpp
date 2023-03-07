@@ -1,41 +1,32 @@
-// in this we will look at the bubble sort algorthim 
-#include<iostream>
-#include<string>
-#include<algorithm>
-
+#include <bits/stdc++.h>
 using namespace std;
-void bubble_sort(int *array, int length)
+/*-------------------Bubble Sort-------------*/
+
+/*----------------------Algorithm-------------------------------
+1. For the index i the sub array arr[i+1,n-1] would be sorted,and in the current ith iteration we bring the greatest element in the sub array arr[0,i] to the index i, through adjacent swaps.
+2. Time Complexity : O(n*n)
+Space Complexity : O(1)
+*/
+void bubbleSort(int n, vector<int> &arr)
 {
-    for (int i = 0; i < length-1; i++)
+    for (int i = n - 1; i >= 0; --i)
     {
-        for (int j = 0; j < length-1-i; j++)
-        {
-            if(array[j] > array[j+1])
-          {
-                 int temp = array[j];
-                 array[j] =  array[j+1];
-                 array[j+1] = temp;
-           }
-        }
-        
+        for (int j = 0; j < i; ++j)
+            if (arr[j] > arr[j + 1])
+                swap(arr[j], arr[j + 1]);
     }
-    
 }
-int main() 
 
-
+int main()
 {
-         int num;
-         cout<< "enter the size of the array" <<endl;
-         cin>>num;
-         int array[num];
-         for(int i=0; i<num; i++)
-             cin>>array[i];
-        bubble_sort(array,num) ;
-        cout<< "the array after sorting is : "<<endl;
-        for(int x : array)
-              cout<< x <<endl;
-
-          return 0;
-
+    int n;
+    cin >> n;
+    vector<int> arr(n);
+    for (int i = 0; i < n; ++i)
+    {
+        cin >> arr[i];
+    }
+    bubbleSort(n, arr);
+    for (auto &val : arr)
+        cout << val << " ";
 } 

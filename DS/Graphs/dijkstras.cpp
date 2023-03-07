@@ -1,11 +1,17 @@
-// Dijkstras Algorthim
-// Dijkstras algorthim is used to find the  shortest distance from the source node to the all other nodes
-// it is applicable to all graphs directed,undirected,directed weighted,undirected weighted,etc but the edges should not have negative weights this is only prerequiste for this algorthim
+/*
+Dijkstras Algorthim
 
-// This is for undirected weighted graph,we can find for directed weighted graphs too
+1. Dijkstras algorthim is used to find the  shortest distance from the source node to the all other nodes.
 
-// in Dijkstras once node is visited then the optimal distance for the node is found,so whenver we encounter the node that is already visited no need to process it because optimal distance is already found,so simply continue to other nodes
-// visited array is optinal, Dijkstras will work fine without visited array too, using of visited array reduces the processing of nodes for which the optimal distance is already found
+2.It is applicable to all graphs directed,undirected,directed weighted,undirected weighted,etc but the edges should not have negative weights this is only prerequiste for this algorthim
+
+3. This is for undirected weighted graph,we can find for directed weighted graphs too
+
+4. In Dijkstras once node is visited then the optimal distance for the node is found,so whenver we encounter the node that is already visited no need to process it because optimal distance is already found,so simply continue to other nodes
+
+5.Visited array is optinal, Dijkstras will work fine without visited array too, using of visited array reduces the processing of nodes for which the optimal distance is already found.
+
+*/
 
 #include <bits/stdc++.h>
 using namespace std;
