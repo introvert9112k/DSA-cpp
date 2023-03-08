@@ -1,6 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+/*----------------NOTE-------------------------------------
+1. See the official Solution of the leetcode problem 28 for explantaion of the code.
+*/
+
 /*This function returns the hashValue of the provided string*/
 int hashValue(string &str, int radix, int mod, int m)
 {
@@ -48,10 +52,10 @@ int RabinKarpAlgo(string &s, string &t)
         }
     }
     return -1;
-} 
+}
 int main()
 {
     string s, t;
     cin >> s >> t;
     cout << RabinKarpAlgo(s, t) << endl;
-} 
+}
