@@ -1,73 +1,57 @@
-#include<iostream>
-#include<string>
-#include<algorithm>
-#define int long long
+#include <bits/stdc++.h>
 using namespace std;
 
-int power(int a,int b)
+/*This function returns the hashValue of the provided string*/
+int hashValue(string &str, int radix, int mod, int m)
 {
-    int res = 1;
-    while(b>0)
+    int ans = 0;
+    long factor = 1;
+    for (int i = m - 1; i >= 0; --i)
     {
-        if(b&1)
-            res = res * a;
-        a = a * a;
-        b = b >> 1;
+        ans += ((int)(str[i] - 'a') * factor) % mod;
+        factor = (factor * radix) % mod;
     }
-    return res;
-} 
-int calculatehash(string temp,int len)
-{
-    int hash = 0;
-    int constant = 3;
-    for (int i = 0; i < len; i++)
-        hash = hash + (temp[i] - 'a') * power(constant, i);
-    return hash;
-} 
-int updatehash(string &parent,int p_hash,int len,int st)
-{
-    int constant = 3;
-    return p_hash/constant + (parent[st + len - 1] - 'a') * power(constant, len - 1) - ((parent[st - 1] - 'a') * power(constant, 0))/constant;
-} 
-bool checking(string parent,string child,int len,int st)
-{
-    int count = 0;
-    for (int i = 0; i < len; i++)
-    {
-        if(parent[st+i] != child[i])
-            return false;
-        count++;
-    }
-    return count == len ? true : false;
+    return ans % mod;
 }
-
-int rabin_karp(string &parent, string &child)
+int RabinKarpAlgo(string &s, string &t)
 {
-    int p_len = parent.length();
-    int c_len = child.length();
-    if(c_len > p_len)
+    int n = s.length();
+    int m = t.length();
+    if (n < m)
         return -1;
-    int p_hash = calculatehash(parent, c_len);
-    int c_hash = calculatehash(child, c_len);
-    if(c_hash == p_hash)
-        return 0;
-    for (int i = 1; i < (p_len - c_len + 1); i++)
+    /*Constants*/
+    int radix = 26;       /*This is variable*/
+    int mod = 1000000033; /*A large Prime number to minimize the collisons*/
+    long maxWeight = 1;
+    for (int i = 0; i < m; ++i)
+        maxWeight = (maxWeight * radix) % mod;
+    /*Computing the hash value of the string t*/
+    long hashOfT = hashValue(t, radix, mod, m);
+    long hashOfSubString;
+    for (int i = 0; i <= n - m; ++i)
     {
-        p_hash = updatehash(parent, p_hash, c_len, i);
-        if(p_hash == c_hash && checking(parent,child,c_len,i))
-             return i;
-    } 
+        if (i == 0)
+            hashOfSubString = hashValue(s, radix, mod, m);
+        else
+        {
+            hashOfSubString = ((hashOfSubString * radix) % mod - ((s[i - 1] - 'a') * maxWeight) % mod + (s[i + m - 1] - 'a') + mod) % mod;
+        }
+        if (hashOfT == hashOfSubString)
+        {
+            for (int j = 0; j < m; ++j)
+            {
+                if (t[j] != s[i + j])
+                    break;
+                if (j == m - 1)
+                    return i; /*This returns first index of matching*/
+            }
+        }
+    }
     return -1;
 } 
-
-int32_t main() 
-
+int main()
 {
-    string parent, child;
-    cin >> parent;
-    cin >> child;
-    int ans = rabin_karp(parent, child);
-    ans >= 0 ? (cout << "string found at index: " << ans << endl) : (cout << "string not found" << endl);
-    return 0;
-
-}
+    string s, t;
+    cin >> s >> t;
+    cout << RabinKarpAlgo(s, t) << endl;
+} 
