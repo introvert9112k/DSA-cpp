@@ -58,4 +58,4 @@ int main()
     string s, t;
     cin >> s >> t;
     cout << RabinKarpAlgo(s, t) << endl;
-}
+} 
