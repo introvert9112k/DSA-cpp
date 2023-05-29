@@ -1,8 +1,24 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main()
+void computePrefixSumMatrix(vector<vector<int>> &matrix)
+{
+    /*Ensure matrix is 0 based indexed*/
+    int m = matrix.size(), n = matrix[0].size();
+    vector<vector<int>> prefixMatrix(m + 1, vector<int>(n + 1, 0));
+    for (int i = 1; i <= m; ++i)
+    {
+        for (int j = 1; j <= n; ++j)
+            prefixMatrix[i][j] = matrix[i - 1][j - 1] + prefixMatrix[i - 1][j] + prefixMatrix[i][j - 1] - prefixMatrix[i - 1][j - 1];
+    }
 
+    /*Formula for getting matix sum having end points (a,b) and (c,d)
+    prefixsum[c + 1][d + 1] - prefixsum[a][d + 1] - prefixsum[c + 1][b] + prefixsum[a][b]
+    NOTE : a,b,c,d are 0 based indexing from original Matrix
+    */
+} 
+
+int main()
 {
     int m, n;
     cin >> m >> n;
@@ -32,4 +48,4 @@ int main()
         cout << prefixsum[c + 1][d + 1] - prefixsum[a][d + 1] - prefixsum[c + 1][b] + prefixsum[a][b] << endl;
     }
     return 0;
-}
+} 
