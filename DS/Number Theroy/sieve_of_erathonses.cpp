@@ -51,4 +51,4 @@ int main()
     findprimes2(n);
 
     return 0; 
-}
+} 
